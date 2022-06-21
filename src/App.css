@@ -5,3 +5,24 @@
 body{
   margin: 0;
 }
+
+.container{
+  display: flex;
+  margin: 0 auto;
+  padding: 0 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.map-box{
+  width: 55%;
+  border: 1px black solid;
+}
+
+.reversation-box{
+  width: 45%;
+  border: 1px black solid;
+}
+
+
+

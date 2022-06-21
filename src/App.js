@@ -5,7 +5,7 @@ import AuthContext from './store/auth-context';
 import HomePage from './pages/HomePage';
 import AuthPage from './pages/AuthPage';
 import ShowAllParkings from './pages/ShowAllParkings';
-import MakeReservations from './pages/MakeReservations';
+import MakeReservations from './pages/MakeReservation';
 import ShowReservation from './pages/ShowReservation';
 import EditReservation from './pages/EditReservation';
 import UserProfile from './components/profile/UserProfile'
