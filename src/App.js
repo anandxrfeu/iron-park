@@ -1,59 +1,31 @@
 import './App.css';
-import Layout from './components/layout/Layout';
-import {Routes, Route} from 'react-router-dom';
-import Park from './components/pages/Park';
-import MakeReservations from './components/pages/MakeReservations';
-import ShowReservation from './components/pages/ShowReservation';
-import EditReservation from './components/pages/EditReservation';
-import ShowAllParkings from './components/pages/ShowAllParkings';
+import {useContext} from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import AuthContext from './store/auth-context';
+import HomePage from './pages/HomePage';
+import AuthPage from './pages/AuthPage';
+import UserProfile from './components/profile/UserProfile'
+import Layout from './components/layout/Layout'
+
+
 
 function App() {
 
-  const adminUser = false;
+  const authCxt = useContext(AuthContext)
+
 
   return (
-    <div className="App">
-      <Layout>
-        <h1>Iron Park</h1>
-        <Routes>
-                      <Route path='/admin/show-all-parkings' element={<ShowAllParkings/>} />
+    <Layout>
+      <Routes>
+          <Route path='/' element={<HomePage />} />
+           {!authCxt.isLoggedIn && (<Route path='/login' element={<AuthPage />} />)}
+          <Route 
+                path='/profile' 
+                element={ authCxt.isLoggedIn ? <UserProfile /> : <Navigate to="/login"/>} 
+          />
+          <Route path='*' element={<Navigate to="/"/>}  />
         </Routes>
-
-        {true && 
-                  (
-                    <Routes>
-                      <Route path='/admin/show-all-parkings' element={<ShowAllParkings/>} />
-                    </Routes>
-                  )
-        }
-
-        <div className="container">
-          <div className="col-left">
-              <p>Map content here..</p>
-          </div>
-          <div className="col-right">
-              <p>Routing components</p>
-              
-                {!adminUser && 
-                  (
-                    <Routes>
-                      <Route path='/' element={<Park/>} />
-                      <Route path='/make-reservation/parking-id/:pid/user-id/:uid' element={<MakeReservations/>} />
-                      <Route path='/show-reservation/reservation-id/:rid' element={<ShowReservation/>} />
-                      <Route path='/edit-reservation/reservation-id/:rid' element={<EditReservation/>} />
-                  </Routes>
-                  )
-                }
-
-                
-              
-          </div>
-        </div>
-
-        
-
       </Layout>
-    </div>
   );
 }
 
