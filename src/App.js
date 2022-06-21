@@ -22,9 +22,9 @@ function App() {
     <Layout>
       <Routes>
           <Route path='/' element={<HomePage />} />
-          {authCxt.isLoggedIn && (<Route path='/make-reservation/parking-id/:pid/user-id/:uid' element={<MakeReservations />} />)}
-          {authCxt.isLoggedIn && (<Route path='/show-reservation/reservation-id/:rid' element={<ShowReservation />} />)}
-          {authCxt.isLoggedIn && (<Route path='/edit-reservation/reservation-id/:rid' element={<EditReservation />} />)}
+          {authCxt.isLoggedIn && (<Route path='/make-reservation/:parking-id' element={<MakeReservations />} />)}
+          {authCxt.isLoggedIn && (<Route path='/show-reservation/:reservation-id' element={<ShowReservation />} />)}
+          {authCxt.isLoggedIn && (<Route path='/edit-reservation/:reservation-id' element={<EditReservation />} />)}
           <Route 
                 path='/profile' 
                 element={ authCxt.isLoggedIn ? <UserProfile /> : <Navigate to="/login"/>} 
