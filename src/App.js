@@ -17,6 +17,9 @@ function App() {
 
   const authCxt = useContext(AuthContext)
 
+  //make http request to get all parking spots 
+  // state 1 : ParkingSpotList -> send it as prop to homePage
+  // state 2 : SelectedParkingSpot -> send it as prop to reservation components
 
   return (
     <Layout>

@@ -15,3 +15,11 @@ const HomePage = () => {
 }
 
 export default HomePage
+
+/**
+ * 
+ * Receives all parking spots as prop and passes it to Map component
+ * Receives SelectParkingSpotHandler as a prop and passes it to Map component
+ * Receives SelectedParkingSpot as a prop and uses it in button
+ * 
+ */

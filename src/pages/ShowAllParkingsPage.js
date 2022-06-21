@@ -5,3 +5,11 @@ const ShowAllParkingsPage = () => {
 }
 
 export default ShowAllParkingsPage
+
+
+/**
+ * 
+ * Makes get HTT request to get all reservations and filters it up area = ironHack
+ * State : ReservationsList
+ * 
+ */
