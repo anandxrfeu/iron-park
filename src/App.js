@@ -4,10 +4,10 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import AuthContext from './store/auth-context';
 import HomePage from './pages/HomePage';
 import AuthPage from './pages/AuthPage';
-import ShowAllParkings from './pages/ShowAllParkings';
-import MakeReservations from './pages/MakeReservation';
-import ShowReservation from './pages/ShowReservation';
-import EditReservation from './pages/EditReservation';
+import ShowAllParkings from './pages/ShowAllParkingsPage';
+import MakeReservations from './pages/MakeReservationPage';
+import ShowReservation from './pages/ShowReservationPage';
+import EditReservation from './pages/EditReservationPage';
 import UserProfile from './components/profile/UserProfile'
 import Layout from './components/layout/Layout'
 
