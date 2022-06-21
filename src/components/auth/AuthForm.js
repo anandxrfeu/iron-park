@@ -100,7 +100,7 @@ const AuthForm = () => {
           <input 
             type='text' 
             ref={nameInputRef} 
-            id='name' required />
+            id='name' />
         </div>
 
         <div className={'control'}>
