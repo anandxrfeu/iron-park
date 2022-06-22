@@ -42,9 +42,27 @@ const ProfileForm = () => {
         axios.post(URL, payload)
             .then(response => {
                 authCxt.login(authCxt.token,response.data.displayName );
+                // update user name in users collection
+                const urlUsers = `https://iron-park-e654f-default-rtdb.firebaseio.com/users/${authCxt.userId}.json`
+                const payloadUsers = {
+                    name: newNicknameInputRef.current.value
+                }
+                console.log(urlUsers)
+                axios.patch(urlUsers,payloadUsers)
+                .then(response => {
+                    console.log('name updated in users ',response.data)
+                })
+                .catch(err => console.log(err))
+                
+            
             }).catch(err => {
                 console.log(err)
             })
+
+    
+        
+        
+       
     }
 
     const deleteHandler  = (event) => {
@@ -57,10 +75,30 @@ const ProfileForm = () => {
 
         axios.post(URL, payload)
             .then(response => {
+               
+                //set user to isActive = false in users collection
+                console.log(authCxt.userId)
+                const urlUsers =   `https://iron-park-e654f-default-rtdb.firebaseio.com/users/${authCxt.userId}.json`
+                console.log(urlUsers)
+
+                const payloadUsers = {
+                    "isActive": false
+                }
+                axios.patch(urlUsers,payloadUsers)
+                .then( response => {
+                    console.log(response.data)
+                })
+                .catch( err => console.log(err))
+
+
+
                 authCxt.logout()
+
             }).catch(err => {
                 console.log(err)
             })
+    
+
 
     }
 

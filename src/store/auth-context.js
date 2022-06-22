@@ -4,8 +4,9 @@ import React, {useState} from 'react';
 const AuthContext = React.createContext({
     token: '',
     name: '',
+    userId: '',
     isLoggedIn: false,
-    login: (token, name) => {},
+    login: (token, name,userId) => {},
     logout: () => {}
 });
 
@@ -15,14 +16,19 @@ export const AuthContextProvider = (props) => {
     const [token, setToken] = useState(initialToken)
     const initialName = localStorage.getItem('userName')
     const [userName, setUserName] = useState(initialName)
+    const initialUserId = localStorage.getItem('userId')
+    const [userId, setUserId] = useState(initialUserId)
     
     const userIsLoggedIn = !!token; //convers a truthy or falsy value to boolean value
     
-    const loginHandler = (token, userName) => {
+    const loginHandler = (token, userName, userId) => {
         setToken(token)
         setUserName(userName)
+        setUserId(userId)
         localStorage.setItem('token',token)
         localStorage.setItem('userName',userName)
+        localStorage.setItem('userId',userId)
+
 
     };
     
@@ -30,6 +36,8 @@ export const AuthContextProvider = (props) => {
         setToken(null)
         localStorage.removeItem('token')
         localStorage.removeItem('userName')
+        localStorage.removeItem('userId')
+
 
     };
 
@@ -37,6 +45,7 @@ export const AuthContextProvider = (props) => {
     const contextValue = {
         token: token,
         name: userName,
+        userId: userId,
         isLoggedIn: userIsLoggedIn,
         login: loginHandler,
         logout: logoutHandler
