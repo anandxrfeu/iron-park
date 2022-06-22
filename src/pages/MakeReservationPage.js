@@ -2,14 +2,16 @@ import Container from "../components/layout/Container"
 import Mapbox from "../components/map/Mapbox"
 import ReservationForm from "../components/reservations/ReservationForm"
 
-const MakeReservationPage = () => {
+const MakeReservationPage = (props) => {
+   const {parkingList,SelectparkingSpotHandler,selectedParkingSpot } = props
+
     return (
             <Container>
                 <div className="map-box" >
-                    <Mapbox />
+                    <Mapbox parkingList={parkingList}  SelectparkingSpotHandler={SelectparkingSpotHandler} selectedParkingSpot={selectedParkingSpot}/>
                 </div>
                 <div className="reservation-box">
-                    <ReservationForm />
+                    <ReservationForm  />
                 </div>
             </Container>
     )

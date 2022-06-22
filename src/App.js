@@ -18,7 +18,7 @@ function App() {
 
   const authCxt = useContext(AuthContext)
 
-  //make http request to get all parking spots 
+  //make http request to get all parking spots
   // state 1 : ParkingSpotList -> send it as prop to homePage
   // state 2 : SelectedParkingSpot -> send it as prop to reservation components
   const [parkingList, setParkingList] = useState({})
@@ -42,7 +42,7 @@ function App() {
   const SelectparkingSpotHandler = (event) => {
     //console.log(event)
     setSelectedParkingSpot(event.target.id)
-    
+
   }
 
 
@@ -51,27 +51,37 @@ function App() {
       {isLoading && <p>Loading..</p>}
       {!isLoading && (
         <Routes>
-          <Route path='/' element={<HomePage 
-                                        parkingList={parkingList} 
-                                        SelectparkingSpotHandler={SelectparkingSpotHandler} 
+          <Route path='/' element={<HomePage
+                                        parkingList={parkingList}
+                                        SelectparkingSpotHandler={SelectparkingSpotHandler}
                                         selectedParkingSpot={selectedParkingSpot}
                                     />} />
-          {authCxt.isLoggedIn && (<Route path='/make-reservation/:parking-id' element={<MakeReservations />} />)}
-          {authCxt.isLoggedIn && (<Route path='/show-reservation/:reservation-id' element={<ShowReservation />} />)}
+          {authCxt.isLoggedIn && (<Route path='/make-reservation/:parkingSpotId' element={<MakeReservations
+            parkingList={parkingList}
+            SelectparkingSpotHandler={SelectparkingSpotHandler}
+            selectedParkingSpot={selectedParkingSpot}
+
+          />} />)}
+          {authCxt.isLoggedIn && (<Route path='/show-reservation/:reservation-id' element={<ShowReservation
+            parkingList={parkingList}
+            SelectparkingSpotHandler={SelectparkingSpotHandler}
+            selectedParkingSpot={selectedParkingSpot}
+
+          />} />)}
           {authCxt.isLoggedIn && (<Route path='/edit-reservation/:reservation-id' element={<EditReservation />} />)}
-          <Route 
-                path='/profile' 
-                element={ authCxt.isLoggedIn ? <UserProfile /> : <Navigate to="/login"/>} 
+          <Route
+                path='/profile'
+                element={ authCxt.isLoggedIn ? <UserProfile /> : <Navigate to="/login"/>}
           />
-          <Route 
-                path='/admin/parking-log' 
-                element={ authCxt.isLoggedIn ? <ShowAllParkings /> : <Navigate to="/login"/>} 
+          <Route
+                path='/admin/parking-log'
+                element={ authCxt.isLoggedIn ? <ShowAllParkings /> : <Navigate to="/login"/>}
           />
           {!authCxt.isLoggedIn && (<Route path='/login' element={<AuthPage />} />)}
           <Route path='*' element={<Navigate to="/"/>}  />
         </Routes>
       )}
-      
+
       </Layout>
   );
 }
