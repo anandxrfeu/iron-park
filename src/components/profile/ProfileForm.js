@@ -14,7 +14,7 @@ const ProfileForm = () => {
     
     const changePasswordHandler = (event) =>{
         event.preventDefault()
-        const URL = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyD7a8bSmuRMCQy271QVQ42Qptjg9PWq41E'
+        const URL = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA2pyJD3KZa6NDBfckTBJvA0Dw1rWXLXdM'
         const payload = {
             idToken: authCxt.token,
             password: newPasswordInputRef.current.value,
@@ -31,7 +31,7 @@ const ProfileForm = () => {
     
     const changeNameHandler = (event) =>{
         event.preventDefault()
-        const URL = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyD7a8bSmuRMCQy271QVQ42Qptjg9PWq41E'
+        const URL = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA2pyJD3KZa6NDBfckTBJvA0Dw1rWXLXdM'
         const payload = {
             idToken: authCxt.token,
             displayName: newNicknameInputRef.current.value,
@@ -50,7 +50,7 @@ const ProfileForm = () => {
     const deleteHandler  = (event) => {
         event.preventDefault()
 
-        const URL = 'https://identitytoolkit.googleapis.com/v1/accounts:delete?key=AIzaSyD7a8bSmuRMCQy271QVQ42Qptjg9PWq41E'
+        const URL = 'https://identitytoolkit.googleapis.com/v1/accounts:delete?key=AIzaSyA2pyJD3KZa6NDBfckTBJvA0Dw1rWXLXdM'
         const payload = {
             idToken: authCxt.token
         }

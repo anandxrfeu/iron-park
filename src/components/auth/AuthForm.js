@@ -25,7 +25,7 @@ const AuthForm = () => {
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
     
-    const payLoad = {
+    let payloadAuth = {
             email: enteredEmail,
             password: enteredPassword,
             returnSecureToken: true,
@@ -33,11 +33,11 @@ const AuthForm = () => {
     // Add form Validation
 
     setIsLoading(true)
-    let url;
+    let urlAuth;
 
     if (isLogin) {
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD7a8bSmuRMCQy271QVQ42Qptjg9PWq41E'
-      axios.post(url, payLoad)
+      urlAuth = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA2pyJD3KZa6NDBfckTBJvA0Dw1rWXLXdM'
+      axios.post(urlAuth, payloadAuth)
       .then( response => {
         authCtx.login(response.data.idToken, response.data.displayName);
       })
@@ -48,33 +48,44 @@ const AuthForm = () => {
 
 
     } else { //sign up
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD7a8bSmuRMCQy271QVQ42Qptjg9PWq41E'
-      axios.post(url, payLoad)
+      urlAuth = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA2pyJD3KZa6NDBfckTBJvA0Dw1rWXLXdM'
+      axios.post(urlAuth, payloadAuth)
       .then( response => {
         //authCtx.login(response.data.idToken, null);
         console.log('New User created', response.data)
         // update display name
-        const URL = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyD7a8bSmuRMCQy271QVQ42Qptjg9PWq41E'
-        const payload = {
+        urlAuth = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA2pyJD3KZa6NDBfckTBJvA0Dw1rWXLXdM'
+        payloadAuth = {
             idToken: response.data.idToken,
             displayName: nameInputRef.current.value,
             photoUrl:'',
-            returnSecureToken: true
+            returnSecureToken: true 
         }
-
-        axios.post(URL, payload)
+        axios.post(urlAuth, payloadAuth)
             .then(response => {
               authCtx.login(authCtx.token,response.data.displayName );
               console.log('User given user name', response.data)
-
-              // save user information in new db
-              
-
-
             }).catch(err => {
                 console.log(err)
             })
 
+
+        const urlUsers = "https://iron-park-e654f-default-rtdb.firebaseio.com/users.json"
+        const payloadUsers = {
+              auth_id: response.data.localId,
+              name: nameInputRef.current.value,
+              isActive : true,
+              isAdmin: false,
+              reservations: []
+        }
+        axios.post(urlUsers,payloadUsers)
+        .then(response => {
+              console.log('Userdata in Users collection', response.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+        
 
       })
       .catch( err => {
