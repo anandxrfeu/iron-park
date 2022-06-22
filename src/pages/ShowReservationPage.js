@@ -1,14 +1,14 @@
 import Container from "../components/layout/Container"
-import Map from "../components/map/Map"
+import Mapbox from "../components/map/Mapbox"
 import ActiveReservation from "../components/reservations/ActiveReservation"
 
 const ShowReservationPage = () => {
     return(
         <Container>
                 <div className="map-box" >
-                    <Map />
+                    <Mapbox />
                 </div>
-                <div className="reversation-box">
+                <div className="reservation-box">
                     <ActiveReservation />
                 </div>
             </Container>

@@ -1,13 +1,16 @@
 import Container from "../components/layout/Container"
-import Map from "../components/map/Map"
+import Mapbox from "../components/map/Mapbox"
 
-const HomePage = () => {
+const HomePage = (props) => {
+
+    const {parkingList,SelectparkingSpotHandler,selectedParkingSpot } = props
+
     return (
             <Container>
                 <div className="map-box" >
-                    <Map />
+                    <Mapbox parkingList={parkingList}  SelectparkingSpotHandler={SelectparkingSpotHandler} selectedParkingSpot={selectedParkingSpot}/>
                 </div>
-                <div className="reversation-box">
+                <div className="reservation-box">
                     <button>Park</button>
                 </div>
             </Container>

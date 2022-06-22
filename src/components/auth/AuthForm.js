@@ -24,6 +24,7 @@ const AuthForm = () => {
     event.preventDefault();
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    
     const payLoad = {
             email: enteredEmail,
             password: enteredPassword,

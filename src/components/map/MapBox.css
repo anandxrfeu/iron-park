@@ -1,0 +1,33 @@
+
+  .pinGreen {
+    filter: invert(68%) sepia(21%) saturate(1041%) hue-rotate(74deg) brightness(100%) contrast(91%);
+  }
+  
+  .pinRed{
+    filter: invert(19%) sepia(81%) saturate(5363%) hue-rotate(355deg) brightness(101%) contrast(91%);
+  }
+
+  .btnPinFree {
+    background-color: none;
+    border: none;
+    background: none;
+  }
+
+  .btnPinReserved {
+    background-color: none;
+    border: none;
+    background: none;
+  }
+
+  .pinGreen:active {
+    filter: invert(35%) sepia(52%) saturate(320%) hue-rotate(73deg) brightness(91%) contrast(88%);
+    }
+  
+  .pinRed:active {
+    filter: invert(10%) sepia(64%) saturate(2774%) hue-rotate(352deg) brightness(99%) contrast(101%)
+  }
+
+  .btnFocus {
+    filter: invert(27%) sepia(78%) saturate(2369%) hue-rotate(208deg) brightness(90%) contrast(94%);
+  }
+

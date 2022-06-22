@@ -17,11 +17,13 @@ body{
 .map-box{
   width: 55%;
   border: 1px black solid;
+  height: 100%;
 }
 
-.reversation-box{
+.reservation-box{
   width: 45%;
   border: 1px black solid;
+  height: 100%;
 }
 
 
