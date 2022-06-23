@@ -44,18 +44,11 @@ const AuthForm = () => {
       .then( response => {
         idToken = response.data.idToken
         userName = response.data.displayName
-        //authCtx.login(response.data.idToken, response.data.displayName, null);
-        //console.log(authCtx.token, authCtx.name)
-
-
-        //use auth_id to get user object
+        
         const urlUsers = `https://iron-park-e654f-default-rtdb.firebaseio.com/users.json?orderBy="auth_id"&equalTo="${response.data.localId}"`
         axios.get(urlUsers)
         .then(response => {
           userId = Object.keys(response.data)[0]
-          //authCtx.login(idToken, authCtx.name, userId);
-          //console.log(authCtx.token, authCtx.name, userId)
-          
           // set context
           authCtx.login(idToken,userName,userId );
 
@@ -72,13 +65,9 @@ const AuthForm = () => {
 
 
     } else { //sign up
-      console.log('sign up initiated')
       urlAuth = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA2pyJD3KZa6NDBfckTBJvA0Dw1rWXLXdM'
       axios.post(urlAuth, payloadAuth)
       .then( response => {
-        //authCtx.login(response.data.idToken, null, null);
-        //console.log('authCxt',authCtx)
-        console.log('New User created', response.data)
         idToken = response.data.idToken
         // update display name
         urlAuth = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA2pyJD3KZa6NDBfckTBJvA0Dw1rWXLXdM'
@@ -88,16 +77,9 @@ const AuthForm = () => {
             photoUrl:'',
             returnSecureToken: true 
         }
-        console.log('Auth display name update initiated')
         axios.post(urlAuth, payloadAuth)
             .then(response => {
               userName = response.data.displayName
-              //console.log('authCxt',authCtx)
-              //authCtx.login(authCtx.token,response.data.displayName,null );
-              console.log('Auth User given user name', response.data)
-
-
-
               const urlUsers = "https://iron-park-e654f-default-rtdb.firebaseio.com/users.json"
               const payloadUsers = {
                     auth_id: response.data.localId,
@@ -107,23 +89,15 @@ const AuthForm = () => {
                     reservations: []
               }
 
-                console.log('User Creation in users Initiated!!')
                 axios.post(urlUsers,payloadUsers)
                 .then(response => { 
-                      console.log('Userdata in Users collection', response.data)
-                      console.log('authCxt',authCtx)
-                      userId = Object.keys(response.data)[0]
-                      //authCtx.login(authCtx.token,response.data.displayName,userId );
-
-                     // set context
-                    authCtx.login(idToken,userName,userId );
-
+                      userId = response.data['name']
+                      // set context
+                      authCtx.login(idToken,userName,userId );
                 })
                 .catch(err => {
                   console.log(err)
                 })
-
-
             }).catch(err => {
                 console.log(err)
             })
