@@ -13,12 +13,7 @@ const ReservationForm  = () => {
   const [reservationId, setReservationId] = useState(null)
 
   const {parkingSpotId} = useParams()
-
-
-  let showReservationURL = ''
-
   
-
   const handleSubmit = (event) => {
     event.preventDefault()
     const reservationPayload = {
@@ -33,15 +28,10 @@ const ReservationForm  = () => {
   axios.post(URL, reservationPayload)
     .then(response => {
       //console.log('teste', response.data)
-      showReservationURL = `/show-reservation/${response.data.name}`
-      //console.log('URL', showReservationURL)
       setReservationId(response.data.name)
-      
+      //window.location.href(showReservationURL)
     })
-
     .catch(error => console.log(error))
-
-    console.log(reservationPayload)
   }
 
 
