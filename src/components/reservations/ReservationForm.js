@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import AuthContext from '../../store/auth-context';
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
@@ -10,7 +10,10 @@ const ReservationForm  = () => {
   const authCtx = useContext(AuthContext)
   const [LicensePlate, setLicensePlate] = useState("")
   const [Duration, setDuration] = useState("")
-  const [reservationId, setReservationId] = useState(null)
+  //const [reservationId, setReservationId] = useState(null)
+
+  const navigate  = useNavigate()
+
 
   const {parkingSpotId} = useParams()
   
@@ -28,8 +31,11 @@ const ReservationForm  = () => {
   axios.post(URL, reservationPayload)
     .then(response => {
       //console.log('teste', response.data)
-      setReservationId(response.data.name)
-      //window.location.href(showReservationURL)
+      //setReservationId(response.data.name)
+      console.log(`/show-reservation/${response.data.name}`)
+      //setReservationId(response.data.name)
+      navigate(`/show-reservation/${response.data.name}`)
+
     })
     .catch(error => console.log(error))
   }
@@ -40,9 +46,9 @@ const ReservationForm  = () => {
 
   return (
     <div>
-      {reservationId && <Navigate to={`/show-reservation/${reservationId}`}/>}
-      {!reservationId && (
-        <form onSubmit={handleSubmit}>
+
+    
+      <form onSubmit={handleSubmit}>
         <div>
           <label>License Plate</label>
           <div>
@@ -101,8 +107,11 @@ const ReservationForm  = () => {
         </div>
         <button className='ConfirmBtn' type="submit">Confirm</button>
       </form>
-      )}
 
+
+  
+
+   
     </div>
   );
 }
