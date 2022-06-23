@@ -9,8 +9,8 @@ import pin from '../../assets/images/pin.png'
 const Mapbox = (props) => {
 
     const {parkingList, SelectparkingSpotHandler, selectedParkingSpot} = props
-    console.log(parkingList)
-    console.log(selectedParkingSpot)
+    //console.log(parkingList)
+    //console.log(selectedParkingSpot)
 
     const [viewport, setViewport] = useState({
         latitude: -23.56167922801466,
@@ -42,11 +42,12 @@ const Mapbox = (props) => {
                                         latitude={parkingSpot.latitude} 
                                         longitude={parkingSpot.longitude} 
                                         anchor="bottom" >
-                                    <button id={parkingSpot._id} 
-                                            onClick={SelectparkingSpotHandler} 
+                                    <button 
                                             className={parkingSpot.reserved === "true" ? 'btnPinReserved' : `btnPinFree ${selectedButtonClass}`}>
                                         <img 
                                             src={pin} 
+                                            id={parkingSpot._id} 
+                                            onClick={SelectparkingSpotHandler} 
                                             style={{height: '40px', width: '40px'}} 
                                             className={parkingSpot.reserved === "true" ? 'pinRed' : `pinGreen ${selectedButtonClass} `}
                                             alt='pin'/>

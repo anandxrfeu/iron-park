@@ -21,26 +21,29 @@ function App() {
   //make http request to get all parking spots
   // state 1 : ParkingSpotList -> send it as prop to homePage
   // state 2 : SelectedParkingSpot -> send it as prop to reservation components
-  const [parkingList, setParkingList] = useState({})
+  const [parkingList, setParkingList] = useState([])
   const [selectedParkingSpot, setSelectedParkingSpot] = useState('')
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect( () => {
-    const url = "https://ironrest.herokuapp.com/iron-park-parkings"
-
+    const url  = 'https://iron-park-e654f-default-rtdb.firebaseio.com/parkings.json'
     axios.get(url)
-      .then( response => {
-        setIsLoading(false)
-        setParkingList(response.data)
-      })
-      .catch( err => {
-        console.log(err)
-      })
+    .then(response => {
+      const keyArray = Object.keys(response.data)
+      const parkingArray = keyArray.map (key => {
+                              const obj = {...response.data[key]}
+                              obj._id = key
+                              return obj
+                            })
+      setIsLoading(false)
+      setParkingList(parkingArray)
+
+    })
+    .catch(err => console.log(err))
 
   },[])
 
   const SelectparkingSpotHandler = (event) => {
-    //console.log(event)
     setSelectedParkingSpot(event.target.id)
 
   }

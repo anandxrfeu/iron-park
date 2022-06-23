@@ -21,12 +21,12 @@ const ReservationForm  = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     const reservationInfo = {
-    licensePlateNumber : LicensePlate,
-    parkingDuration : Duration,
-    parkingSpotId : parkingSpotId,
-    reservationTime : (new Date()).getTime(),
-    area : "iron hack",
-    userId : authCtx.userId
+      licensePlateNumber : LicensePlate,
+      parkingDuration : Duration,
+      parkingSpotId : parkingSpotId,
+      reservationTime : (new Date()).getTime(),
+      area : "iron hack",
+      userId : authCtx.userId
 }
   const URL = 'https://iron-park-e654f-default-rtdb.firebaseio.com/reservations.json'
   axios.post(URL, reservationInfo)
