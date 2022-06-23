@@ -60,17 +60,17 @@ function App() {
                                         selectedParkingSpot={selectedParkingSpot}
                                     />} />
           {authCxt.isLoggedIn && (<Route path='/make-reservation/:parkingSpotId' element={<MakeReservations
-            parkingList={parkingList}
-            SelectparkingSpotHandler={SelectparkingSpotHandler}
-            selectedParkingSpot={selectedParkingSpot}
+                                        parkingList={parkingList}
+                                        SelectparkingSpotHandler={SelectparkingSpotHandler}
+                                        selectedParkingSpot={selectedParkingSpot}
 
-          />} />)}
+                                      />} />)}
           {authCxt.isLoggedIn && (<Route path='/show-reservation/:reservation-id' element={<ShowReservation
-            parkingList={parkingList}
-            SelectparkingSpotHandler={SelectparkingSpotHandler}
-            selectedParkingSpot={selectedParkingSpot}
+                                        parkingList={parkingList}
+                                        SelectparkingSpotHandler={SelectparkingSpotHandler}
+                                        selectedParkingSpot={selectedParkingSpot}
 
-          />} />)}
+                                      />} />)}
           {authCxt.isLoggedIn && (<Route path='/edit-reservation/:reservation-id' element={<EditReservation />} />)}
           <Route
                 path='/profile'

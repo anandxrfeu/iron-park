@@ -43,13 +43,13 @@ const Mapbox = (props) => {
                                         longitude={parkingSpot.longitude} 
                                         anchor="bottom" >
                                     <button 
-                                            className={parkingSpot.reserved === "true" ? 'btnPinReserved' : `btnPinFree ${selectedButtonClass}`}>
+                                            className={parkingSpot.reserved ? 'btnPinReserved' : `btnPinFree ${selectedButtonClass}`}>
                                         <img 
                                             src={pin} 
                                             id={parkingSpot._id} 
                                             onClick={SelectparkingSpotHandler} 
                                             style={{height: '40px', width: '40px'}} 
-                                            className={parkingSpot.reserved === "true" ? 'pinRed' : `pinGreen ${selectedButtonClass} `}
+                                            className={parkingSpot.reserved ? 'pinRed' : `pinGreen ${selectedButtonClass} `}
                                             alt='pin'/>
                                     </button>
                                 </Marker>  
