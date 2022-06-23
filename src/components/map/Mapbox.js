@@ -26,7 +26,7 @@ const Mapbox = (props) => {
             <Map
             initialViewState = {{...viewport}}
             mapboxAccessToken = 'pk.eyJ1IjoiY2dsaWswMDEiLCJhIjoiY2w0ZXNocnZ1MDBoNTNrcGY4OWphYnZkMCJ9.RvQmDejsiPEhdQnR3o94Iw'
-            style ={{width: '100vh', height: '100vh'}}
+            style ={{width: '100vh', height: '90vh'}}
             mapStyle = "mapbox://styles/mapbox/streets-v9"
             >
                 {parkingList.map( parkingSpot => {

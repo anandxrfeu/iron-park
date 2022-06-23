@@ -28,8 +28,6 @@ export const AuthContextProvider = (props) => {
         localStorage.setItem('token',token)
         localStorage.setItem('userName',userName)
         localStorage.setItem('userId',userId)
-
-
     };
     
     const logoutHandler = () => {

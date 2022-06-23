@@ -10,6 +10,9 @@ const AuthForm = () => {
 
   // connect context
   const authCtx = useContext(AuthContext)
+  let idToken = ''
+  let userId = ''
+  let userName = ''
 
   const emailInputRef = useRef();
   const passwordInputRef = useRef();  
@@ -34,14 +37,14 @@ const AuthForm = () => {
 
     setIsLoading(true)
     let urlAuth;
-    let idToken = ''
 
     if (isLogin) {
       urlAuth = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA2pyJD3KZa6NDBfckTBJvA0Dw1rWXLXdM'
       axios.post(urlAuth, payloadAuth)
       .then( response => {
         idToken = response.data.idToken
-        authCtx.login(response.data.idToken, response.data.displayName, null);
+        userName = response.data.displayName
+        //authCtx.login(response.data.idToken, response.data.displayName, null);
         //console.log(authCtx.token, authCtx.name)
 
 
@@ -49,12 +52,17 @@ const AuthForm = () => {
         const urlUsers = `https://iron-park-e654f-default-rtdb.firebaseio.com/users.json?orderBy="auth_id"&equalTo="${response.data.localId}"`
         axios.get(urlUsers)
         .then(response => {
-          const userId = Object.keys(response.data)[0]
-          authCtx.login(idToken, authCtx.name, userId);
+          userId = Object.keys(response.data)[0]
+          //authCtx.login(idToken, authCtx.name, userId);
           //console.log(authCtx.token, authCtx.name, userId)
+          
+          // set context
+          authCtx.login(idToken,userName,userId );
 
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          console.log(err)
+        })
 
       })
       .catch( err => {
@@ -64,47 +72,61 @@ const AuthForm = () => {
 
 
     } else { //sign up
+      console.log('sign up initiated')
       urlAuth = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA2pyJD3KZa6NDBfckTBJvA0Dw1rWXLXdM'
       axios.post(urlAuth, payloadAuth)
       .then( response => {
-        //authCtx.login(response.data.idToken, null);
+        //authCtx.login(response.data.idToken, null, null);
+        //console.log('authCxt',authCtx)
         console.log('New User created', response.data)
+        idToken = response.data.idToken
         // update display name
         urlAuth = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA2pyJD3KZa6NDBfckTBJvA0Dw1rWXLXdM'
         payloadAuth = {
-            idToken: response.data.idToken,
+            idToken: idToken,
             displayName: nameInputRef.current.value,
             photoUrl:'',
             returnSecureToken: true 
         }
+        console.log('Auth display name update initiated')
         axios.post(urlAuth, payloadAuth)
             .then(response => {
-              authCtx.login(authCtx.token,response.data.displayName,null );
-              console.log('User given user name', response.data)
+              userName = response.data.displayName
+              //console.log('authCxt',authCtx)
+              //authCtx.login(authCtx.token,response.data.displayName,null );
+              console.log('Auth User given user name', response.data)
+
+
+
+              const urlUsers = "https://iron-park-e654f-default-rtdb.firebaseio.com/users.json"
+              const payloadUsers = {
+                    auth_id: response.data.localId,
+                    name: nameInputRef.current.value,
+                    isActive : true,
+                    isAdmin: false,
+                    reservations: []
+              }
+
+                console.log('User Creation in users Initiated!!')
+                axios.post(urlUsers,payloadUsers)
+                .then(response => { 
+                      console.log('Userdata in Users collection', response.data)
+                      console.log('authCxt',authCtx)
+                      userId = Object.keys(response.data)[0]
+                      //authCtx.login(authCtx.token,response.data.displayName,userId );
+
+                     // set context
+                    authCtx.login(idToken,userName,userId );
+
+                })
+                .catch(err => {
+                  console.log(err)
+                })
+
+
             }).catch(err => {
                 console.log(err)
             })
-
-
-        const urlUsers = "https://iron-park-e654f-default-rtdb.firebaseio.com/users.json"
-        const payloadUsers = {
-              auth_id: response.data.localId,
-              name: nameInputRef.current.value,
-              isActive : true,
-              isAdmin: false,
-              reservations: []
-        }
-        axios.post(urlUsers,payloadUsers)
-        .then(response => {
-              console.log('Userdata in Users collection', response.data)
-              const userId = Object.keys(response.data)[0]
-              authCtx.login(authCtx.token,response.data.displayName,userId );
-
-        })
-        .catch(err => {
-          console.log(err)
-        })
-        
 
       })
       .catch( err => {
