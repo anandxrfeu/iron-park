@@ -32,7 +32,7 @@ function App() {
       const keyArray = Object.keys(response.data)
       const parkingArray = keyArray.map (key => {
                               const obj = {...response.data[key]}
-                              obj._id = key
+                              obj.id = key
                               return obj
                             })
       setIsLoading(false)

@@ -31,14 +31,14 @@ const Mapbox = (props) => {
             >
                 {parkingList.map( parkingSpot => {
                             let selectedButtonClass= ''
-                            if(parkingSpot._id === selectedParkingSpot){
+                            if(parkingSpot.id === selectedParkingSpot){
                                 console.log(`${selectedParkingSpot} match!!`)
                                 selectedButtonClass = 'btnFocus'
 
                             }
 
                             return (
-                                <Marker key={parkingSpot._id} 
+                                <Marker key={parkingSpot.id} 
                                         latitude={parkingSpot.latitude} 
                                         longitude={parkingSpot.longitude} 
                                         anchor="bottom" >
@@ -46,7 +46,7 @@ const Mapbox = (props) => {
                                             className={parkingSpot.reserved ? 'btnPinReserved' : `btnPinFree ${selectedButtonClass}`}>
                                         <img 
                                             src={pin} 
-                                            id={parkingSpot._id} 
+                                            id={parkingSpot.id} 
                                             onClick={SelectparkingSpotHandler} 
                                             style={{height: '40px', width: '40px'}} 
                                             className={parkingSpot.reserved ? 'pinRed' : `pinGreen ${selectedButtonClass} `}
