@@ -5,7 +5,7 @@ import AuthContext from './store/auth-context';
 import HomePage from './pages/HomePage';
 import AuthPage from './pages/AuthPage';
 import ShowAllParkings from './pages/ShowAllParkingsPage';
-import MakeReservations from './pages/MakeReservationPage';
+import MakeReservation from './pages/MakeReservationPage';
 import ShowReservation from './pages/ShowReservationPage';
 import EditReservation from './pages/EditReservationPage';
 import UserProfile from './components/profile/UserProfile'
@@ -59,7 +59,7 @@ function App() {
                                         SelectparkingSpotHandler={SelectparkingSpotHandler}
                                         selectedParkingSpot={selectedParkingSpot}
                                     />} />
-          {authCxt.isLoggedIn && (<Route path='/make-reservation/:parkingSpotId' element={<MakeReservations
+          {authCxt.isLoggedIn && (<Route path='/make-reservation/:parkingSpotId' element={<MakeReservation
                                         parkingList={parkingList}
                                         SelectparkingSpotHandler={SelectparkingSpotHandler}
                                         selectedParkingSpot={selectedParkingSpot}

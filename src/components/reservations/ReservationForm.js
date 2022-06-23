@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import AuthContext from '../../store/auth-context';
 import { useParams, Navigate } from "react-router-dom";
 import axios from "axios";
@@ -8,53 +8,51 @@ import axios from "axios";
 
 const ReservationForm  = () => {
   const authCtx = useContext(AuthContext)
-  const [LicensePlate, setLicensePlate] = useState("");
-  const [DriverName, setDriverName] = useState(authCtx.name);
-  const [Duration, setDuration] = useState("");
-  const {parkingSpotId} = useParams()
-  const [isNavigate, setIsNavigate] = useState(false)
+  const [LicensePlate, setLicensePlate] = useState("")
+  const [Duration, setDuration] = useState("")
+  const [reservationId, setReservationId] = useState(null)
 
-  let reservationId = null
+  const {parkingSpotId} = useParams()
+
+
   let showReservationURL = ''
 
-  console.log(authCtx)
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-    const reservationInfo = {
-      licensePlateNumber : LicensePlate,
-      parkingDuration : Duration,
-      parkingSpotId : parkingSpotId,
-      reservationTime : (new Date()).getTime(),
-      area : "iron hack",
-      userId : authCtx.userId
-}
+  
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const reservationPayload = {
+            licensePlateNumber : LicensePlate,
+            parkingDuration : Duration,
+            parkingSpotId : parkingSpotId,
+            reservationTime : (new Date()).getTime(),
+            area : "iron hack",
+            userId : authCtx.userId
+      }
   const URL = 'https://iron-park-e654f-default-rtdb.firebaseio.com/reservations.json'
-  axios.post(URL, reservationInfo)
+  axios.post(URL, reservationPayload)
     .then(response => {
-      console.log('teste', response.data)
-      reservationId = response.data.name
-      showReservationURL = `/show-reservation/${reservationId}`
-      console.log('URL', showReservationURL)
-      setIsNavigate(true)
+      //console.log('teste', response.data)
+      showReservationURL = `/show-reservation/${response.data.name}`
+      //console.log('URL', showReservationURL)
+      setReservationId(response.data.name)
+      
     })
 
     .catch(error => console.log(error))
 
-    console.log(reservationInfo)
+    console.log(reservationPayload)
   }
 
-  if (isNavigate) {
-    return (
 
-       <Navigate to={showReservationURL}></Navigate>
+  
 
-    )
-  }
 
   return (
     <div>
-
-      <form onSubmit={handleSubmit}>
+      {reservationId && <Navigate to={`/show-reservation/${reservationId}`}/>}
+      {!reservationId && (
+        <form onSubmit={handleSubmit}>
         <div>
           <label>License Plate</label>
           <div>
@@ -72,7 +70,8 @@ const ReservationForm  = () => {
             <input
               type="text"
               name="DriverName"
-              value={DriverName}
+              value={authCtx.name}
+              readOnly
             />
           </div>
         </div>
@@ -112,6 +111,8 @@ const ReservationForm  = () => {
         </div>
         <button className='ConfirmBtn' type="submit">Confirm</button>
       </form>
+      )}
+
     </div>
   );
 }

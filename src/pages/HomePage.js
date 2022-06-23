@@ -5,14 +5,15 @@ import {Link} from "react-router-dom"
 const HomePage = (props) => {
 
     const {parkingList,SelectparkingSpotHandler,selectedParkingSpot } = props
-
+    const url =`/make-reservation/${selectedParkingSpot}` 
+    
     return (
             <Container>
                 <div className="map-box" >
                     <Mapbox parkingList={parkingList}  SelectparkingSpotHandler={SelectparkingSpotHandler} selectedParkingSpot={selectedParkingSpot}/>
                 </div>
                 <div className="reservation-box">
-                  <Link to={`/make-reservation/${selectedParkingSpot}`}>
+                  <Link to={url}>
                       <button>Park</button>
                   </Link>
 

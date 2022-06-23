@@ -32,7 +32,6 @@ const Mapbox = (props) => {
                 {parkingList.map( parkingSpot => {
                             let selectedButtonClass= ''
                             if(parkingSpot.id === selectedParkingSpot){
-                                console.log(`${selectedParkingSpot} match!!`)
                                 selectedButtonClass = 'btnFocus'
 
                             }
