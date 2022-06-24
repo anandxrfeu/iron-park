@@ -65,13 +65,13 @@ function App() {
                                         selectedParkingSpot={selectedParkingSpot}
 
                                       />} />)}
-          {authCxt.isLoggedIn && (<Route path='/show-reservation/:reservation-id' element={<ShowReservation
+          {authCxt.isLoggedIn && (<Route path='/show-reservation/:reservationId' element={<ShowReservation
                                         parkingList={parkingList}
                                         SelectparkingSpotHandler={SelectparkingSpotHandler}
                                         selectedParkingSpot={selectedParkingSpot}
 
                                       />} />)}
-          {authCxt.isLoggedIn && (<Route path='/edit-reservation/:reservation-id' element={<EditReservation />} />)}
+          {authCxt.isLoggedIn && (<Route path='/edit-reservation/:reservationId' element={<EditReservation />} />)}
           <Route
                 path='/profile'
                 element={ authCxt.isLoggedIn ? <UserProfile /> : <Navigate to="/login"/>}

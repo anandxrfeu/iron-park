@@ -1,0 +1,13 @@
+.titleActive {
+  color: green;
+}
+
+.activeContainer {
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  border: solid 2px gray;
+  border-radius: 14px;
+  width: 320px;
+  margin: 0 auto;
+}

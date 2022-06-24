@@ -10,13 +10,14 @@ const ReservationForm  = () => {
   const authCtx = useContext(AuthContext)
   const [LicensePlate, setLicensePlate] = useState("")
   const [Duration, setDuration] = useState("")
+  let reservationId = null
   //const [reservationId, setReservationId] = useState(null)
 
   const navigate  = useNavigate()
 
 
   const {parkingSpotId} = useParams()
-  
+
   const handleSubmit = (event) => {
     event.preventDefault()
     const reservationPayload = {
@@ -28,9 +29,47 @@ const ReservationForm  = () => {
             userId : authCtx.userId
       }
   const URL = 'https://iron-park-e654f-default-rtdb.firebaseio.com/reservations.json'
+
   axios.post(URL, reservationPayload)
     .then(response => {
       //console.log('teste', response.data)
+      reservationId = response.data.name
+      // --- Make HTTP Request To Parkings To Set Reserved === true
+      const URLParking = `https://iron-park-e654f-default-rtdb.firebaseio.com/parkings/${parkingSpotId}.json`
+      const parkingPayload = {
+           reserved: true
+      }
+      axios.patch(URLParking, parkingPayload)
+        .then(response => {
+          // --- Make HTTP request to users//
+          const URLUserInfo = `https://iron-park-e654f-default-rtdb.firebaseio.com/users/${authCtx.userId}.json`
+          axios.get(URLUserInfo)
+            .then(response => {
+              const URLUsers = `https://iron-park-e654f-default-rtdb.firebaseio.com/users/${authCtx.userId}.json`
+              console.log(response.data)
+              const userReservations = response.data['reservations']
+              userReservations.push(reservationId)
+              console.log(userReservations)
+              const UserPayload = {
+                reservations: userReservations
+               // ...response.data,
+               // response.data.reservations.push(reservationId)
+               // reservations: [reservationId]
+          }
+          //UserPayload['reservations'].push(reservationId)
+          //console.log(UserPayload)
+          axios.patch(URLUsers, UserPayload)
+            .then(response => {
+              console.log(response.data)
+            })
+            .catch(error => console.log(error))
+            })
+            .catch(error => console.log(error))
+
+
+
+        })
+        .catch(error => console.log(error))
       //setReservationId(response.data.name)
       console.log(`/show-reservation/${response.data.name}`)
       //setReservationId(response.data.name)
@@ -41,13 +80,13 @@ const ReservationForm  = () => {
   }
 
 
-  
+
 
 
   return (
     <div>
 
-    
+
       <form onSubmit={handleSubmit}>
         <div>
           <label>License Plate</label>
@@ -109,9 +148,9 @@ const ReservationForm  = () => {
       </form>
 
 
-  
 
-   
+
+
     </div>
   );
 }
