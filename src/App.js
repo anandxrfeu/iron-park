@@ -10,6 +10,7 @@ import ShowReservation from './pages/ShowReservationPage';
 import EditReservation from './pages/EditReservationPage';
 import UserProfile from './components/profile/UserProfile'
 import Layout from './components/layout/Layout'
+import ExpiredReservation from './components/reservations/ExpiredReservation';
 import axios from 'axios';
 
 
@@ -71,6 +72,7 @@ function App() {
                                         selectedParkingSpot={selectedParkingSpot}
 
                                       />} />)}
+                    
           {authCxt.isLoggedIn && (<Route path='/edit-reservation/:reservationId' element={<EditReservation />} />)}
           <Route
                 path='/profile'
