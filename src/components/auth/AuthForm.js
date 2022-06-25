@@ -88,9 +88,11 @@ const AuthForm = () => {
                     isAdmin: false,
                     reservations: []
               }
+              console.log(payloadUsers)
 
                 axios.post(urlUsers,payloadUsers)
                 .then(response => { 
+                    console.log('new user sign up',response.data)
                       userId = response.data['name']
                       // set context
                       authCtx.login(idToken,userName,userId );

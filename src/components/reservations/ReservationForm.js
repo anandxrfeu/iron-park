@@ -29,7 +29,7 @@ const ReservationForm  = () => {
             userId : authCtx.userId
       }
   const URL = 'https://iron-park-e654f-default-rtdb.firebaseio.com/reservations.json'
-
+  //create new reservation
   axios.post(URL, reservationPayload)
     .then(response => {
       //console.log('teste', response.data)
@@ -42,22 +42,21 @@ const ReservationForm  = () => {
       axios.patch(URLParking, parkingPayload)
         .then(response => {
           // --- Make HTTP request to users//
+          console.log('Patching parking as true ',response.data)
           const URLUserInfo = `https://iron-park-e654f-default-rtdb.firebaseio.com/users/${authCtx.userId}.json`
           axios.get(URLUserInfo)
             .then(response => {
+              console.log('Getting User Info: ',response.data)
               const URLUsers = `https://iron-park-e654f-default-rtdb.firebaseio.com/users/${authCtx.userId}.json`
-              console.log(response.data)
-              const userReservations = response.data['reservations']
+              let userReservations = [] 
+              if(response.data['reservations']){
+                userReservations = response.data['reservations']
+              }
               userReservations.push(reservationId)
               console.log(userReservations)
               const UserPayload = {
                 reservations: userReservations
-               // ...response.data,
-               // response.data.reservations.push(reservationId)
-               // reservations: [reservationId]
           }
-          //UserPayload['reservations'].push(reservationId)
-          //console.log(UserPayload)
           axios.patch(URLUsers, UserPayload)
             .then(response => {
               console.log(response.data)
@@ -70,10 +69,8 @@ const ReservationForm  = () => {
 
         })
         .catch(error => console.log(error))
-      //setReservationId(response.data.name)
-      console.log(`/show-reservation/${response.data.name}`)
-      //setReservationId(response.data.name)
-      navigate(`/show-reservation/${response.data.name}`)
+        console.log(`/show-reservation/${response.data.name}`)
+        navigate(`/show-reservation/${response.data.name}`)
 
     })
     .catch(error => console.log(error))
