@@ -26,7 +26,8 @@ const ReservationForm  = () => {
             parkingSpotId : parkingSpotId,
             reservationTime : (new Date()).getTime(),
             area : "iron hack",
-            userId : authCtx.userId
+            userId : authCtx.userId,
+            userName : authCtx.name
       }
   const URL = 'https://iron-park-e654f-default-rtdb.firebaseio.com/reservations.json'
   //create new reservation
