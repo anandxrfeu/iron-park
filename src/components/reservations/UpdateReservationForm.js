@@ -9,10 +9,12 @@ import axios from "axios";
 const UpdateReservationForm  = (props) => {
   const authCtx = useContext(AuthContext)
   const [duration, setDuration] = useState("")
-  const {licensePlateNumber} = props
+  const {licensePlateNumber, extendReservationHandler} = props
   
-  const handleSubmit = () => {
-
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('inhandleSubmit of Update reservationform')
+    extendReservationHandler(Number(duration))
   }
 
 

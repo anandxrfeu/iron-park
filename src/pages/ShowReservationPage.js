@@ -68,7 +68,27 @@ const ShowReservationPage = (props) => {
 
     const showExtendHandler = () => {
         setIsExtendReservation (true)
-//        setIsExtendReservation ( (previousState) => !previousState )
+    }
+
+    const extendReservationHandler = (newDuration) => {
+        const currentDuration = Number(reservationDetail.parkingDuration)
+        newDuration = newDuration + currentDuration
+   
+        const url = `https://iron-park-e654f-default-rtdb.firebaseio.com/reservations/${reservationId}.json`
+        const payload = {
+            parkingDuration : newDuration,
+        }
+        axios.patch(url,payload)
+        .then(response => {
+            console.log('Reservation extended ',response.data)
+            setReservationDetail({
+                ...reservationDetail,
+                parkingDuration : response.data.parkingDuration
+            })
+            setIsExtendReservation(false)
+        })
+        .catch( error => console.log(error))
+
     }
 
 
@@ -86,12 +106,15 @@ const ShowReservationPage = (props) => {
                             {isExtendReservation && (
                                 <>
                                     <p> Show Update Form </p>
-                                    <UpdateReservationForm  licensePlateNumber={reservationDetail.licensePlateNumber} />
+                                    <UpdateReservationForm  
+                                        licensePlateNumber={reservationDetail.licensePlateNumber} 
+                                        extendReservationHandler={extendReservationHandler}
+                                        />
                                 </>
                             )}
                         </>
                     )}
-                    {!isActiveReservation && <ExpiredReservation />}
+                    {!isActiveReservation && <ExpiredReservation checkOutTime={displayTime(reservationDetail.reservationTime +  Number(reservationDetail.parkingDuration)*60000)}/>}
                     
                 </div>
             </Container>

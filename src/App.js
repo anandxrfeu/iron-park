@@ -73,7 +73,6 @@ function App() {
 
                                       />} />)}
                     
-          {authCxt.isLoggedIn && (<Route path='/edit-reservation/:reservationId' element={<EditReservation />} />)}
           <Route
                 path='/profile'
                 element={ authCxt.isLoggedIn ? <UserProfile /> : <Navigate to="/login"/>}
