@@ -5,13 +5,16 @@ import Container from "../components/layout/Container"
 import Mapbox from "../components/map/Mapbox"
 import ActiveReservation from "../components/reservations/ActiveReservation"
 import ExpiredReservation from "../components/reservations/ExpiredReservation"
-import ReservationForm from "../components/reservations/ReservationForm"
 import UpdateReservationForm from "../components/reservations/UpdateReservationForm"
 
 
+function padTo2Digits(num) {
+    return String(num).padStart(2, '0');
+  }
+
 const displayTime = (timestamp) => {
     const time = new Date(timestamp)
-    return `${time.getHours()}:${time.getMinutes()}`
+    return `${padTo2Digits(time.getHours())}:${padTo2Digits(time.getMinutes())}`
 
   }
 

@@ -13,8 +13,12 @@ const Mapbox = (props) => {
     //console.log(selectedParkingSpot)
 
     const [viewport, setViewport] = useState({
-        latitude: -23.56167922801466,
-        longitude: -46.66003661013792,
+        //latitude: -23.56167922801466,
+        //longitude: -46.66003661013792,
+
+        latitude: -23.5617757,
+        longitude: -46.6610803,
+
         width: '100vh',
         height: '100vh',
         zoom: 18,
