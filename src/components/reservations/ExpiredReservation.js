@@ -21,9 +21,12 @@ const ExpiredReservation  = (props) => {
 
     return (
         <div>
-            <h1>Reservation Expired</h1>
-            <h2>{checkOutTime}</h2>
-            <h4>Thank you, for parking with us.</h4>
+            <h1 className="expiredTitle">RESERVATION EXPIRED</h1>
+            <div className="expiredContainer">
+              <h2 className="expiredTime">{checkOutTime}</h2>
+            </div>
+
+            <h4 className="thankYouExpired">Thank you, for parking with us.</h4>
         </div>
     )
 }

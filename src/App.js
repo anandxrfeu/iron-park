@@ -72,7 +72,7 @@ function App() {
                                         selectedParkingSpot={selectedParkingSpot}
 
                                       />} />)}
-                    
+
           <Route
                 path='/profile'
                 element={ authCxt.isLoggedIn ? <UserProfile /> : <Navigate to="/login"/>}

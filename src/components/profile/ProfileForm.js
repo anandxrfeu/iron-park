@@ -5,13 +5,13 @@ import AuthContext from '../../store/auth-context'
 import axios from 'axios'
 
 const ProfileForm = () => {
-    
+
     const newPasswordInputRef = useRef()
     const newNicknameInputRef = useRef()
 
     const authCxt = useContext(AuthContext)
-    
-    
+
+
     const changePasswordHandler = (event) =>{
         console.log('in NAME ',authCxt)
 
@@ -30,7 +30,7 @@ const ProfileForm = () => {
                 console.log(err)
             })
     }
-    
+
     const changeNameHandler = (event) =>{
         console.log('in NAME ',authCxt)
         event.preventDefault()
@@ -60,16 +60,16 @@ const ProfileForm = () => {
 
                 })
                 .catch(err => console.log(err))
-                
-            
+
+
             }).catch(err => {
                 console.log(err)
             })
 
-    
-        
-        
-       
+
+
+
+
     }
 
     const deleteHandler  = (event) => {
@@ -102,7 +102,7 @@ const ProfileForm = () => {
             }).catch(err => {
                 console.log(err)
             })
-    
+
 
 
     }
@@ -111,7 +111,7 @@ const ProfileForm = () => {
         <>
             <form className='form' onSubmit={changeNameHandler}>
                 <div className='control'>
-                    <label htmlFor='name'>Nickname</label>
+                    <label htmlFor='name'>Full Name</label>
                     <input type='text' id='name' ref={newNicknameInputRef}/>
                 </div>
                 <div className='action'>
@@ -132,7 +132,7 @@ const ProfileForm = () => {
 
             <form className='form' onSubmit={deleteHandler}>
                 <div className='action'>
-                    <button>Delete Account</button>
+                    <button className="formButtonDelete">Delete Account</button>
                 </div>
             </form>
 

@@ -15,7 +15,7 @@ const AuthForm = () => {
   let userName = ''
 
   const emailInputRef = useRef();
-  const passwordInputRef = useRef();  
+  const passwordInputRef = useRef();
   const nameInputRef = useRef();
 
 
@@ -27,7 +27,7 @@ const AuthForm = () => {
     event.preventDefault();
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-    
+
     let payloadAuth = {
             email: enteredEmail,
             password: enteredPassword,
@@ -44,7 +44,7 @@ const AuthForm = () => {
       .then( response => {
         idToken = response.data.idToken
         userName = response.data.displayName
-        
+
         const urlUsers = `https://iron-park-e654f-default-rtdb.firebaseio.com/users.json?orderBy="auth_id"&equalTo="${response.data.localId}"`
         axios.get(urlUsers)
         .then(response => {
@@ -75,7 +75,7 @@ const AuthForm = () => {
             idToken: idToken,
             displayName: nameInputRef.current.value,
             photoUrl:'',
-            returnSecureToken: true 
+            returnSecureToken: true
         }
         axios.post(urlAuth, payloadAuth)
             .then(response => {
@@ -91,7 +91,7 @@ const AuthForm = () => {
               console.log(payloadUsers)
 
                 axios.post(urlUsers,payloadUsers)
-                .then(response => { 
+                .then(response => {
                     console.log('new user sign up',response.data)
                       userId = response.data['name']
                       // set context
@@ -109,10 +109,10 @@ const AuthForm = () => {
         if(err.response && err.response.data && err.response.data.error && err.response.data.error.message)
         alert(err.response.data.error.message) //you can set error message on state and show on a model
       })
-      
+
     }
 
-   
+
     setIsLoading(false)
 
   }
@@ -125,25 +125,25 @@ const AuthForm = () => {
       <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
       <form onSubmit={submitHandler}>
       <div className={!isLogin ? 'control' : 'hide'}>
-          <label htmlFor='name'>Your Name</label>
-          <input 
-            type='text' 
-            ref={nameInputRef} 
+          <label id="inputlabel" htmlFor='name'>Your Name</label>
+          <input
+            type='text'
+            ref={nameInputRef}
             id='name' />
         </div>
 
         <div className={'control'}>
-          <label htmlFor='email'>Your Email</label>
-          <input 
-            type='email' 
-            ref={emailInputRef} 
+          <label  id="inputlabel" htmlFor='email'>Your Email</label>
+          <input
+            type='email'
+            ref={emailInputRef}
             id='email' required />
         </div>
         <div className='control'>
-          <label htmlFor='password'>Your Password</label>
-          <input 
-            type='password' 
-            ref={passwordInputRef} 
+          <label id="inputlabel" htmlFor='password'>Your Password</label>
+          <input
+            type='password'
+            ref={passwordInputRef}
             id='password' required />
         </div>
         <div className='actions'>

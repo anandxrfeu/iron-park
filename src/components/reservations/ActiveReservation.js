@@ -5,19 +5,21 @@ import '../reservations/ActiveReservation.css'
 const ActiveReservation  = (props) => {
 
   const {checkInTime, checkOutTime} = props
- 
+
 
     return (
-        <div>
-          <h1 className="titleActive">ACTIVE</h1>
-          <div className="activeContainer">
-            <div className="left-card-time">
-              <h3>Check-In</h3>
-              <h4>{checkInTime}</h4>
-            </div>
-            <div className="right-card-time">
-              <h3>Check-Out</h3>
-              <h4>{checkOutTime}</h4>
+        <div className="activeRightBlack">
+          <div className='centerActiveComponent'>
+            <h1 className="titleActive">ACTIVE</h1>
+            <div className="activeContainer">
+              <div className="left-card-time">
+                <h4 className="checkInOutLabel">CHECK-IN</h4>
+                <h2 className="timeActiveLabel">{checkInTime}</h2>
+              </div>
+              <div className="right-card-time">
+                <h4 className="checkInOutLabel">CHECK-OUT</h4>
+                <h2 className="timeActiveLabel">{checkOutTime}</h2>
+              </div>
             </div>
           </div>
         </div>

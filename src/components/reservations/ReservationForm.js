@@ -6,10 +6,41 @@ import axios from "axios";
 
 
 
+
 const ReservationForm  = () => {
   const authCtx = useContext(AuthContext)
   const [LicensePlate, setLicensePlate] = useState("")
   const [Duration, setDuration] = useState("")
+
+
+
+  const [is5Clicked, setIs5Clicked] = useState(false)
+  const [is10Clicked, setIs10Clicked] = useState(false)
+  const [is15Clicked, setIs15Clicked] = useState(false)
+
+  const setDurationHandler = (event) => {
+    const id = event.target.id
+    if (id === "option1") {
+      setIs5Clicked(true)
+      is10Clicked && setIs10Clicked(false)
+      is15Clicked && setIs15Clicked(false)
+    }
+    else if (id === "option2") {
+      setIs10Clicked(true)
+      is5Clicked && setIs5Clicked(false)
+      is15Clicked && setIs15Clicked(false)
+
+    }
+    else if (id === "option3") {
+      setIs15Clicked(true)
+      is10Clicked && setIs10Clicked(false)
+      is5Clicked && setIs5Clicked(false)
+    }
+
+    setDuration(event.target.value)
+  }
+
+
   let reservationId = null
   //const [reservationId, setReservationId] = useState(null)
 
@@ -49,7 +80,7 @@ const ReservationForm  = () => {
             .then(response => {
               console.log('Getting User Info: ',response.data)
               const URLUsers = `https://iron-park-e654f-default-rtdb.firebaseio.com/users/${authCtx.userId}.json`
-              let userReservations = [] 
+              let userReservations = []
               if(response.data['reservations']){
                 userReservations = response.data['reservations']
               }
@@ -82,14 +113,17 @@ const ReservationForm  = () => {
 
 
   return (
-    <div>
+    <div className="reservationFormContainer">
 
+      <div>
+        <h1 className="parkingInfo">PARKING INFO</h1>
+      </div>
 
       <form onSubmit={handleSubmit}>
         <div>
-          <label>License Plate</label>
+          <label className="labelForm">LICENSE PLATE</label>
           <div>
-            <input
+            <input className="inputForForm inputForForm1"
               type="text"
               name="LicensePlate"
               onChange={(e) => setLicensePlate(e.target.value)}
@@ -97,10 +131,10 @@ const ReservationForm  = () => {
             />
           </div>
         </div>
-        <div>
-          <label>Driver Name</label>
+        <div className="positionInputForm2">
+          <label  className="labelForm">DRIVER NAME</label>
           <div>
-            <input
+            <input className="inputForForm inputForForm2"
               type="text"
               name="DriverName"
               value={authCtx.name}
@@ -109,40 +143,50 @@ const ReservationForm  = () => {
           </div>
         </div>
         <div>
-        <label>Duration</label>
-          <div>
+        <label className="labelForm">DURATION</label>
+          <div className="allRadioBtns">
             <div className="radio">
-              <label>
-                <input
-                  type="radio"
-                  value="5"
-                  name="Duration Radio Buttons"
-                  onChange={(e) => setDuration(e.target.value)}
-                />
-                5 Min
-              </label>
-          </div>
-            <label>
-              <input
-                type="radio"
-                value="10"
-                name="Duration Radio Buttons"
-                onChange={(e) => setDuration(e.target.value)}
-              />
-              10 Min
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="15"
-                name="Duration Radio Buttons"
-                onChange={(e) => setDuration(e.target.value)}
-              />
-              15 Min
-            </label>
+                <label className={is5Clicked ?  "btn btn-light btn-selectTime btn-selectTimeClicked" : "btn btn-light btn-selectTime "} htmlFor="option1" >
+                  <input
+                    type="radio"
+                    className="btn-check"
+                    value="5"
+                    id="option1"
+                    autoComplete="off"
+                    name="Duration Radio Buttons"
+                    onChange={setDurationHandler}
+                  />
+                  5 Min
+                </label>
+
+                <label  className={is10Clicked ?  "btn btn-light btn-selectTime btn-selectTimeClicked" : "btn btn-light btn-selectTime "} htmlFor="option2"  >
+                  <input
+                    type="radio"
+                    className="btn-check"
+                    value="10"
+                    id="option2"
+                    autoComplete="off"
+                    name="Duration Radio Buttons"
+                    onChange={setDurationHandler}
+                  />
+                  10 Min
+                </label>
+                <label  className={is15Clicked ?  "btn btn-light btn-selectTime btn-selectTimeClicked" : "btn btn-light btn-selectTime "}  htmlFor="option3" >
+                  <input
+                    type="radio"
+                    value="15"
+                    className="btn-check"
+                    id="option3"
+                    autoComplete="off"
+                    name="Duration Radio Buttons"
+                    onChange={setDurationHandler}
+                  />
+                  15 Min
+                </label>
+             </div>
           </div>
         </div>
-        <button className='ConfirmBtn' type="submit">Confirm</button>
+        <button className='ConfirmBtn' type="submit">CONFIRM</button>
       </form>
 
 

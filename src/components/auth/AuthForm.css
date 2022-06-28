@@ -1,9 +1,9 @@
 .auth {
   margin: 3rem auto;
   width: 95%;
-  max-width: 25rem;
-  border-radius: 6px;
-  background-color: #3e56f3;
+  max-width: 34rem;
+  border-radius: 28px;
+  background-color: black;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   text-align: center;
@@ -12,6 +12,8 @@
 .auth h1 {
   text-align: center;
   color: white;
+  margin-top: 20px;
+  padding-bottom: 14px;
 }
 
 .control {
@@ -34,6 +36,7 @@
   width: 100%;
   text-align: left;
   padding: 0.25rem;
+  margin-bottom: 38px;
 }
 
 .actions {
@@ -49,8 +52,9 @@
   color: white;
   background-color: #9f5ccc;
   border: 1px solid #9f5ccc;
-  border-radius: 4px;
+  border-radius: 22px;
   padding: 0.5rem 2.5rem;
+  margin-top: 20px;
 }
 
 .actions button:hover {
@@ -73,4 +77,9 @@
 
 .hide{
   display: none;
+}
+
+#inputlabel {
+  color: white;
+  font-weight: 200;
 }

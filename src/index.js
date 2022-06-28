@@ -7,6 +7,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 //import {unstable_HistoryRouter as HistoryRouter} from 'react-router-dom';
 import {AuthContextProvider} from './store/auth-context'
 import 'mapbox-gl/dist/mapbox-gl.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

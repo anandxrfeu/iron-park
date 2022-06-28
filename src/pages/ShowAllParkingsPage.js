@@ -2,6 +2,7 @@
 import axios from "axios"
 import { useEffect,useState, useContext } from "react"
 import AuthContext from '../store/auth-context';
+import './ShowAllParkingPage.css'
 
 
 const displayDateTime = (timeStamp) => {
@@ -14,7 +15,7 @@ const ShowAllParkingsPage = () => {
 
     const authCtx = useContext(AuthContext)
     const [resevationList, setReservationsList] = useState([])
-    
+
     useEffect(()=>{
 
         const urlUsers =  `https://iron-park-e654f-default-rtdb.firebaseio.com/users/${authCtx.userId}.json`
@@ -58,7 +59,7 @@ const ShowAllParkingsPage = () => {
                     <th>Date & Time</th>
 
                 </tr>
-               
+
                     {resevationList.map( reservation => {
                         return (
                             <tr key={reservation.id}>
@@ -77,5 +78,3 @@ const ShowAllParkingsPage = () => {
 }
 
 export default ShowAllParkingsPage
-
-

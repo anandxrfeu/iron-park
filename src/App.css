@@ -1,3 +1,6 @@
+
+
+
 * {
 	box-sizing : border-box; /* content + padding + border */
 }
@@ -6,12 +9,14 @@ body{
   margin: 0;
 }
 
-.container{
+.app-container{
   display: flex;
   margin: 0 auto;
   padding: 0 10px;
   text-align: center;
   vertical-align: middle;
+  border: 5px solid red;
+
 }
 
 .map-box{
@@ -22,9 +27,232 @@ body{
 
 .reservation-box{
   width: 45%;
-  border: 1px black solid;
-  height: 100%;
+  border: none;
+  height: 90vh;
+  background-color: black;
 }
 
 
 
+.parkBtn {
+  margin-top: 80%;
+  width: 360px;
+  height: 110px;
+  font-size: 58px;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 60px;
+  color: white;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 30%;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.parkBtn:hover{
+  background-color: #1AAF41;
+  border: 1px solid #1AAF41;
+}
+
+/* Reservation Form Begin*/
+
+.reservationFormContainer {
+  height: 699px;
+  width: 669px;
+  background-color: black;
+}
+
+.parkingInfo {
+  color: white;
+  padding-top: 40px;
+  font-weight: bold;
+}
+
+ .labelForm {
+   font-size: 22px;
+   margin-bottom: 18px;
+   color: white;
+ }
+
+.inputForForm {
+  width: 300px;
+  height: 52px;
+  border: 1px solid black;
+  border-radius: 24px;
+}
+
+.inputForForm1 {
+  font-size: 28px;
+  font-weight: bold;
+  align-content: center;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.inputForForm2{
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.radio {
+  margin-top: 20px;
+  display: flex;
+  justify-items: center;
+  justify-content: space-around;
+  width: 306px;
+  margin: 0 auto;
+}
+
+.btn-light.btn-selectTime {
+  width: 80px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.btn.btn-light.btn-selectTime.btn-selectTimeClicked {
+  background-color: #1363DF;
+  border: 2px solid #1363DF;
+  color: white;
+}
+
+.btn-light.btn-selectTime:hover{
+  background-color: #1363DF;
+  border: 2px solid #1363DF;
+  color: white;
+}
+
+.ConfirmBtn {
+  width: 240px;
+  height: 60px;
+  color: white;
+  background-color: #1AAF41;
+  border: 1px solid #1AAF41;
+  border-radius: 30px;
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 60px;
+}
+
+/* Reservation Form End*/
+
+/* Active Reservation Begin
+
+.activeRightBlack {
+  background-color: black;
+  height: 698px;
+}
+*/
+
+.activeRightBlack {
+  background-color: black;
+}
+
+
+.extendBtn {
+    width: 280px;
+    height: 64px;
+    color: white;
+    background-color: #1AAF41;
+    border: 1px solid #1AAF41;
+    border-radius: 36px;
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 60px;
+    text-align: center;
+}
+
+
+/* Active Reservation End*/
+
+/* Reservation Update Form */
+.inputFormUpdate {
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 22px;
+  margin-bottom: 20px;
+  margin-top: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.inputFormUpdate1 {
+  font-weight: bold;
+}
+
+.btn-light.btn-selectTime2 {
+  width: 80px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.btn.btn-light.btn-selectTime2.btn-selectTimeClicked {
+  background-color: #1363DF;
+  border: 2px solid #1363DF;
+  color: white;
+}
+
+.btn-light.btn-selectTime2:hover {
+  background-color: #1363DF;
+  border: 2px solid #1363DF;
+  color: white;
+}
+
+.labelFormUpdate {
+  color: white;
+}
+
+
+.durationLabel {
+  padding-top: 16px;
+}
+
+
+/*  Reservation Update Form end*/
+
+/*  Expired Component Begin */
+
+.expiredTitle {
+  font-weight: bold;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  margin-top: 160px;
+  font-size: 42px;
+  color: white;
+}
+
+.expiredContainer {
+  border: solid 2px white;
+  border-radius: 20px;
+  width: 254px;
+  height: 104px;
+  margin: 0 auto;
+  padding-top: 6px;
+  padding-bottom: 10px;
+  padding-right: 8px;
+  padding-left: 8px;
+  text-align: center;
+}
+
+.expiredTime {
+  font-size: 72px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+.thankYouExpired {
+  margin-top: 40px;
+  font-size: 22px;
+  color: white;
+}

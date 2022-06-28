@@ -12,7 +12,7 @@ import UpdateReservationForm from "../components/reservations/UpdateReservationF
 const displayTime = (timestamp) => {
     const time = new Date(timestamp)
     return `${time.getHours()}:${time.getMinutes()}`
-  
+
   }
 
 
@@ -25,7 +25,7 @@ const ShowReservationPage = (props) => {
 
     const {reservationId} = useParams()
     const [reservationDetail, setReservationDetail] = useState({})
-    const [counter, setCounter] = useState(0)   
+    const [counter, setCounter] = useState(0)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -51,7 +51,7 @@ const ShowReservationPage = (props) => {
                     }
                 axios.patch(URLParking, parkingPayload)
                 .then(response => {
-                
+
                 //navigate('/')
                 clearTimeout(id)
                 setIsActiveReservation(false)
@@ -73,7 +73,7 @@ const ShowReservationPage = (props) => {
     const extendReservationHandler = (newDuration) => {
         const currentDuration = Number(reservationDetail.parkingDuration)
         newDuration = newDuration + currentDuration
-   
+
         const url = `https://iron-park-e654f-default-rtdb.firebaseio.com/reservations/${reservationId}.json`
         const payload = {
             parkingDuration : newDuration,
@@ -100,14 +100,13 @@ const ShowReservationPage = (props) => {
                 <div className="reservation-box">
                     {isActiveReservation && (
                         <>
-                            <ActiveReservation  checkInTime={displayTime(reservationDetail.reservationTime)} 
+                            <ActiveReservation  checkInTime={displayTime(reservationDetail.reservationTime)}
                                                 checkOutTime={displayTime(reservationDetail.reservationTime +  Number(reservationDetail.parkingDuration)*60000)} />
-                            {!isExtendReservation && <button onClick={showExtendHandler}>Extend</button> }
+                            {!isExtendReservation && <button className="extendBtn activeRightBlack" onClick={showExtendHandler}>EXTEND</button> }
                             {isExtendReservation && (
                                 <>
-                                    <p> Show Update Form </p>
-                                    <UpdateReservationForm  
-                                        licensePlateNumber={reservationDetail.licensePlateNumber} 
+                                    <UpdateReservationForm
+                                        licensePlateNumber={reservationDetail.licensePlateNumber}
                                         extendReservationHandler={extendReservationHandler}
                                         />
                                 </>
@@ -115,7 +114,7 @@ const ShowReservationPage = (props) => {
                         </>
                     )}
                     {!isActiveReservation && <ExpiredReservation checkOutTime={displayTime(reservationDetail.reservationTime +  Number(reservationDetail.parkingDuration)*60000)}/>}
-                    
+
                 </div>
             </Container>
     )

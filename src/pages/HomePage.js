@@ -2,11 +2,12 @@ import Container from "../components/layout/Container"
 import Mapbox from "../components/map/Mapbox"
 import {Link} from "react-router-dom"
 
+
 const HomePage = (props) => {
 
     const {parkingList,SelectparkingSpotHandler,selectedParkingSpot } = props
-    const url =`/make-reservation/${selectedParkingSpot}` 
-    
+    const url =`/make-reservation/${selectedParkingSpot}`
+
     return (
             <Container>
                 <div className="map-box" >
@@ -14,7 +15,7 @@ const HomePage = (props) => {
                 </div>
                 <div className="reservation-box">
                   <Link to={url}>
-                      <button>Park</button>
+                      <button className="parkBtn">PARK</button>
                   </Link>
 
                 </div>

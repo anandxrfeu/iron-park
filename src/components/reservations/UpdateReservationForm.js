@@ -10,12 +10,40 @@ const UpdateReservationForm  = (props) => {
   const authCtx = useContext(AuthContext)
   const [duration, setDuration] = useState("")
   const {licensePlateNumber, extendReservationHandler} = props
-  
+
   const handleSubmit = (event) => {
     event.preventDefault()
     console.log('inhandleSubmit of Update reservationform')
     extendReservationHandler(Number(duration))
   }
+
+  const [is5Clicked, setIs5Clicked] = useState(false)
+  const [is10Clicked, setIs10Clicked] = useState(false)
+  const [is15Clicked, setIs15Clicked] = useState(false)
+
+  const setDurationHandler = (event) => {
+    const id = event.target.id
+    if (id === "option1") {
+      setIs5Clicked(true)
+      is10Clicked && setIs10Clicked(false)
+      is15Clicked && setIs15Clicked(false)
+    }
+    else if (id === "option2") {
+      setIs10Clicked(true)
+      is5Clicked && setIs5Clicked(false)
+      is15Clicked && setIs15Clicked(false)
+
+    }
+    else if (id === "option3") {
+      setIs15Clicked(true)
+      is10Clicked && setIs10Clicked(false)
+      is5Clicked && setIs5Clicked(false)
+    }
+
+    setDuration(event.target.value)
+  }
+
+
 
 
   return (
@@ -24,9 +52,9 @@ const UpdateReservationForm  = (props) => {
 
       <form onSubmit={handleSubmit}>
         <div>
-          <label>License Plate</label>
+          <label className='labelFormUpdate'>LICENSE PLATE</label>
           <div>
-            <input
+            <input  className="inputFormUpdate inputFormUpdate1"
               type="text"
               name="LicensePlate"
               value={licensePlateNumber}
@@ -35,9 +63,9 @@ const UpdateReservationForm  = (props) => {
           </div>
         </div>
         <div>
-          <label>Driver Name</label>
+          <label  className='labelFormUpdate'>DRIVER NAME</label>
           <div>
-            <input
+            <input className="inputFormUpdate"
               type="text"
               name="DriverName"
               value={authCtx.name}
@@ -46,40 +74,50 @@ const UpdateReservationForm  = (props) => {
           </div>
         </div>
         <div>
-        <label>Duration</label>
-          <div>
-            <div className="radio">
-              <label>
+        <label className="durationLabel labelFormUpdate">DURATION</label>
+            <div>
+              <div className="radio">
+                <label className={is5Clicked ?  "btn btn-light btn-selectTime2 btn-selectTimeClicked" : "btn btn-light btn-selectTime2 "} htmlFor="option1">
+                  <input
+                    type="radio"
+                    className="btn-check"
+                    value="5"
+                    id="option1"
+                    autoComplete="off"
+                    name="Duration Radio Buttons"
+                    onChange={setDurationHandler}
+                  />
+                  5 Min
+                </label>
+
+              <label className={is10Clicked ?  "btn btn-light btn-selectTime2 btn-selectTimeClicked" : "btn btn-light btn-selectTime2 "} htmlFor="option2">
                 <input
                   type="radio"
-                  value="5"
+                  className="btn-check"
+                  value="10"
+                  id="option2"
+                  autoComplete="off"
                   name="Duration Radio Buttons"
-                  onChange={(e) => setDuration(e.target.value)}
+                  onChange={setDurationHandler}
                 />
-                5 Min
+                10 Min
               </label>
-          </div>
-            <label>
-              <input
-                type="radio"
-                value="10"
-                name="Duration Radio Buttons"
-                onChange={(e) => setDuration(e.target.value)}
-              />
-              10 Min
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="15"
-                name="Duration Radio Buttons"
-                onChange={(e) => setDuration(e.target.value)}
-              />
-              15 Min
-            </label>
+              <label className={is15Clicked ?  "btn btn-light btn-selectTime2 btn-selectTimeClicked" : "btn btn-light btn-selectTime2 "}  htmlFor="option3" >
+                <input
+                  type="radio"
+                  className="btn-check"
+                  value="15"
+                  id="option3"
+                  autoComplete="off"
+                  name="Duration Radio Buttons"
+                  onChange={setDurationHandler}
+                />
+                15 Min
+              </label>
+            </div>
           </div>
         </div>
-        <button className='ConfirmBtn' type="submit">Confirm</button>
+        <button className='ConfirmBtn' type="submit">CONFIRM</button>
       </form>
 
     </div>
@@ -87,5 +125,3 @@ const UpdateReservationForm  = (props) => {
 }
 
 export default UpdateReservationForm
-
-
