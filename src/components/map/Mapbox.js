@@ -19,8 +19,8 @@ const Mapbox = (props) => {
         latitude: -23.5617757,
         longitude: -46.6610803,
 
-        width: '100vh',
-        height: '100vh',
+        width: '100%',
+        height: '100%',
         zoom: 18,
     
       })
@@ -30,7 +30,7 @@ const Mapbox = (props) => {
             <Map
             initialViewState = {{...viewport}}
             mapboxAccessToken = 'pk.eyJ1IjoiY2dsaWswMDEiLCJhIjoiY2w0ZXNocnZ1MDBoNTNrcGY4OWphYnZkMCJ9.RvQmDejsiPEhdQnR3o94Iw'
-            style ={{width: '100vh', height: '90vh'}}
+            style ={{width: '55vw', height: '100vh'}}
             mapStyle = "mapbox://styles/mapbox/streets-v9"
             >
                 {parkingList.map( parkingSpot => {

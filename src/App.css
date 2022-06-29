@@ -7,28 +7,32 @@
 
 body{
   margin: 0;
+  font-family: 'Hind', sans-serif;
+}
+
+#main_container{
+  font-family: 'Hind', sans-serif;
 }
 
 .app-container{
   display: flex;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0;
   text-align: center;
   vertical-align: middle;
-  border: 5px solid red;
+  margin-top: 5rem;
 
 }
 
 .map-box{
   width: 55%;
-  border: 1px black solid;
   height: 100%;
 }
 
 .reservation-box{
   width: 45%;
   border: none;
-  height: 90vh;
+  height: 100vh;
   background-color: black;
 }
 
@@ -59,9 +63,11 @@ body{
 /* Reservation Form Begin*/
 
 .reservationFormContainer {
-  height: 699px;
+  height: 43.6rem;
   width: 669px;
   background-color: black;
+  margin: 0 auto;
+  margin-top: 120px;
 }
 
 .parkingInfo {
