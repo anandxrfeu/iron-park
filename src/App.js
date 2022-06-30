@@ -79,7 +79,7 @@ function App() {
           />
           <Route
                 path='/admin/parking-log'
-                element={ authCxt.isLoggedIn ? <ShowAllParkings /> : <Navigate to="/login"/>}
+                element={ authCxt.isLoggedIn && authCxt.isAdmin ? <ShowAllParkings /> : <Navigate to="/login"/>}
           />
           {!authCxt.isLoggedIn && (<Route path='/login' element={<AuthPage />} />)}
           <Route path='*' element={<Navigate to="/"/>}  />

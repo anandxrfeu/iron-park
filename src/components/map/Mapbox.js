@@ -32,6 +32,8 @@ const Mapbox = (props) => {
             mapboxAccessToken = 'pk.eyJ1IjoiY2dsaWswMDEiLCJhIjoiY2w0ZXNocnZ1MDBoNTNrcGY4OWphYnZkMCJ9.RvQmDejsiPEhdQnR3o94Iw'
             style ={{width: '55vw', height: '100vh'}}
             mapStyle = "mapbox://styles/mapbox/streets-v9"
+            //mapStyle = "mapbox://styles/mapbox/navigation-day-v1"
+            
             >
                 {parkingList.map( parkingSpot => {
                             let selectedButtonClass= ''

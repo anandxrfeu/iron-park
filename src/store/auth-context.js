@@ -6,7 +6,8 @@ const AuthContext = React.createContext({
     name: '',
     userId: '',
     isLoggedIn: false,
-    login: (token, name,userId) => {},
+    isAdmin: false,
+    login: (token, name,userId, isAdmin) => {},
     logout: () => {}
 });
 
@@ -18,16 +19,22 @@ export const AuthContextProvider = (props) => {
     const [userName, setUserName] = useState(initialName)
     const initialUserId = localStorage.getItem('userId')
     const [userId, setUserId] = useState(initialUserId)
+    const initialAdmin = localStorage.getItem('isAdmin')
+    const [isAdmin, setIsAdmin] = useState(initialAdmin)
     
     const userIsLoggedIn = !!token; //convers a truthy or falsy value to boolean value
     
-    const loginHandler = (token, userName, userId) => {
+    const loginHandler = (token, userName, userId, isAdmin) => {
         setToken(token)
         setUserName(userName)
         setUserId(userId)
+        setIsAdmin(isAdmin)
         localStorage.setItem('token',token)
         localStorage.setItem('userName',userName)
-        localStorage.setItem('userId',userId)
+        localStorage.setItem('userId',userId)        
+        localStorage.setItem('isAdmin',isAdmin)
+        console.log('type of in context', typeof isAdmin)
+
     };
     
     const logoutHandler = () => {
@@ -35,8 +42,7 @@ export const AuthContextProvider = (props) => {
         localStorage.removeItem('token')
         localStorage.removeItem('userName')
         localStorage.removeItem('userId')
-
-
+        localStorage.removeItem('isAdmin')
     };
 
     // set Context Value
@@ -45,6 +51,7 @@ export const AuthContextProvider = (props) => {
         name: userName,
         userId: userId,
         isLoggedIn: userIsLoggedIn,
+        isAdmin: isAdmin,
         login: loginHandler,
         logout: logoutHandler
     }

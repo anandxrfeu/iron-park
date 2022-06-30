@@ -45,7 +45,7 @@ const ShowAllParkingsPage = () => {
         })
         .catch(error => console.log(error))
 
-    },[])
+    },[authCtx.userId])
 
     return (
         <>

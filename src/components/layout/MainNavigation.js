@@ -7,6 +7,7 @@ const MainNavigation = () => {
 
   const authCxt = useContext(AuthContext)
   const isLoggedIn = authCxt.isLoggedIn
+  const isAdmin = authCxt.isAdmin
   const loggedInUserName = authCxt.name;
   
   const logoutHandler = () => {
@@ -19,7 +20,18 @@ const MainNavigation = () => {
         <div className='logo'>Iron Park</div>
       </Link>
       <nav>
+      
         <ul>
+        {console.log('isAdmin: ',isAdmin)}
+        {console.log('typeof isAdmin: ',typeof isAdmin)}
+
+        {isLoggedIn && isAdmin && (
+          <li>
+            <Link to='/admin/parking-log'>Parking Log</Link>
+          </li>
+        )}
+
+
         {!isLoggedIn && (
           <li>
             <Link to='/login'>Login</Link>
