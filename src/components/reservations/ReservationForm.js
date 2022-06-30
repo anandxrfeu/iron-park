@@ -124,6 +124,7 @@ const ReservationForm  = () => {
           <label className="labelForm">LICENSE PLATE</label>
           <div>
             <input className="inputForForm inputForForm1"
+              placeholder = "ABC-1234"
               type="text"
               name="LicensePlate"
               onChange={(e) => setLicensePlate(e.target.value)}

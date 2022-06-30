@@ -1,0 +1,196 @@
+.containerTable {
+  padding-top: 150px;
+  display: flex;
+  margin-left: 70px;
+  color: white;
+
+}
+
+.areaContainer {
+  margin-right: 100px;
+  color: white;
+}
+
+.areaText {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.areaName {
+ font-size: 41px;
+}
+
+.adminBlackBackground {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.scrollit {
+  overflow: scroll;
+  height: 80vh;
+}
+
+/*thead {
+width: 80%;
+}*/
+
+.mainthead {
+
+}
+
+.theadline {
+
+
+}
+
+.tableheadcustom {
+  padding-bottom: 16px;
+  font-size: 18px;
+  font-weight: 400;
+
+}
+
+.trparkinginfo {
+  border-bottom: 0.2px solid white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+td {
+  padding-top: 44px;
+  padding-bottom: 28px;
+  padding-right: 50px;
+
+}
+
+.tablecomponent {
+  width: 80%;
+
+}
+
+
+.circleinfo {
+  border: 1px solid white;
+  padding: 8px;
+  padding-right: 18px;
+  padding-left: 18px;
+  border-radius: 22px;
+  color: black;
+  background-color: white;
+  display: flex;
+  vertical-align: middle;
+  justify-content: space-around;
+}
+
+.tableheadcustom.reservationcustom {
+
+}
+
+.tableheadcustom.licenseplatecustom {
+
+  padding-left: 159px;
+  padding-right: 12px;
+
+}
+
+.tableheadcustom.drivercustom {
+  padding-left: 53px;
+  padding-right: 6px ;
+}
+
+.durationcustom {
+  padding-left: 70px;
+}
+
+.timecustom {
+  padding-left: 78px;
+}
+
+.circleinfolicense {
+  font-weight: bold;
+}
+
+.trdiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.tdthlabel {
+  font-weight: 200;
+  align-content: center;
+  justify-content: center;
+  padding-top: 30px;
+
+}
+
+
+.titleLog {
+  color: white;
+  padding-top: 160px;
+  font-size: 82px;
+  padding-left: 23%;
+
+}
+
+.tdspace {
+  padding-right: 50px;
+}
+
+/*
+
+.circleinfo.circleinfoid {
+  width: 2rem;
+  border: 1px solid white;
+  padding: 8px;
+  padding-right: 18px;
+  padding-left: 18px;
+  border-radius: 22px;
+  color: black;
+  background-color: white;
+  width: 40%;
+}
+*/
+
+.circleinfo.circleinfoid{
+width: 240px;
+height: 42px;
+text-align: center;
+padding-top: 10px ;
+padding-bottom: 10px;
+}
+
+
+.reservationidtd {
+
+}
+
+/*.circleinfo.circleinfoname {
+  width: 110px;
+  height: 42px;
+}*/
+
+.circleinfo.circleinfoname {
+    width: 144px;
+    height: 42px;
+
+}
+
+.circleinfo.circleinfoduration {
+  width: 96px;
+  height: 42px;
+}
+
+.circleinfo.circleinfolicense {
+  width: 107px;
+  height: 42px;
+}
+
+::placeholder {
+  opacity: 0.2;
+}
+
+.tryline {
+  border-bottom: 5px solid white;
+}

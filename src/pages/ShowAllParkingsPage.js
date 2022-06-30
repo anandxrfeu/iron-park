@@ -49,30 +49,58 @@ const ShowAllParkingsPage = () => {
 
     return (
         <>
-            <p>Show All Parking (Admin Only)</p>
-            <table>
-                <tr>
-                    <th>Reservation Id</th>
-                    <th>License Plate</th>
-                    <th>Driver Name</th>
-                    <th>Duration</th>
-                    <th>Date & Time</th>
+          <div className="adminBlackBackground">
+            <h1 className="titleLog">PARKING ZONE LOG</h1>
+            <div className="containerTable">
+                    <div className="areaContainer">
+                      <h1 className='areaText'>AREA</h1>
+                      <h1 className='areaName'>Iron Hack</h1>
+                    </div>
+                    <div className="tablecomponent">
+                        <table>
+                          <div className="tryline">
+                            <thead className="mainthead">
+                                <tr className="theadline">
+                                    <th className="tableheadcustom reservationcustom">RESERVATION ID</th>
+                                    <th className="tableheadcustom licenseplatecustom">LICENSE PLATE</th>
+                                    <th className="tableheadcustom drivercustom">DRIVER NAME</th>
+                                    <th className="tableheadcustom durationcustom">DURATION</th>
+                                    <th className="tableheadcustom timecustom">DATE & TIME</th>
+                                </tr>
+                              </thead>
+                          </div>
+                          <div className="scrollit">
+                            <tbody>
 
-                </tr>
 
-                    {resevationList.map( reservation => {
-                        return (
-                            <tr key={reservation.id}>
-                                <td>{reservation.id}</td>
-                                <td>{reservation.licensePlateNumber}</td>
-                                <td>{reservation.userName}</td>
-                                <td>{reservation.parkingDuration} mins</td>
-                                <td>{displayDateTime(reservation.reservationTime)}</td>
-                            </tr>
-                            )
-                    })}
+                                    {resevationList.map( reservation => {
+                                        return (
+                                            <tr className="trparkinginfo" key={reservation.id}>
+                                                <div className="reservationidtd">
+                                                  <td className="tdspace"><span className="circleinfo circleinfoid">{reservation.id}</span></td>
+                                                </div>
+                                                <div className="reservationidtd">
+                                                  <td className="tdspace circleinfolicense"><span className="circleinfo circleinfolicense">{reservation.licensePlateNumber}</span></td>
+                                                </div>
+                                                 <div className="reservationidtd">
+                                                    <td className="tdspace"><span className="circleinfo circleinfoname">{reservation.userName}</span></td>
+                                                 </div>
+                                                 <div className="reservationidtd">
+                                                     <td className="tdspace"><span className="circleinfo circleinfoduration">{reservation.parkingDuration} mins</span></td>
+                                                 </div>
+                                                 <div className="reservationidtd">
+                                                    <td className="tdspace"><span className="circleinfo circleinfotime">{displayDateTime(reservation.reservationTime)}</span></td>
+                                                 </div>
+                                            </tr>
+                                            )
+                                    })}
 
-            </table>
+                              </tbody>
+                            </div>
+                        </table>
+                    </div>
+              </div>
+            </div>
         </>
     )
 }
