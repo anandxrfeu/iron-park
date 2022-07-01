@@ -5,10 +5,16 @@ import AuthContext from '../store/auth-context';
 import './ShowAllParkingPage.css'
 
 
+
+
+function padTo2Digits(num) {
+  return String(num).padStart(2, '0');
+}
+
 const displayDateTime = (timeStamp) => {
-    const dateTime = new Date(timeStamp)
-    //return dateTime.toDateString()
-    return `${Intl.DateTimeFormat().format(dateTime)} ${dateTime.getHours()}:${dateTime.getMinutes()}`
+  const dateTime = new Date(timeStamp)
+  //return dateTime.toDateString()
+  return `${Intl.DateTimeFormat().format(dateTime)} ${padTo2Digits(dateTime.getHours())}:${padTo2Digits(dateTime.getMinutes())}`
 }
 
 const ShowAllParkingsPage = () => {
