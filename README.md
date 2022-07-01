@@ -22,10 +22,9 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+
 
 Iron Park helps vehicle drivers find and use available parking spots on streets. Features includes
 * See all available parking spots on a street
@@ -33,12 +32,10 @@ Iron Park helps vehicle drivers find and use available parking spots on streets.
 * Extend parking reservation for fixed time
 * View logs of parking reservations (City Council Users)
 
+
 [![Product Name Screen Shot][product-screenshot]](https://iron-park.netlify.app/)
 
-
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 ### Built With
@@ -48,9 +45,7 @@ Iron Park helps vehicle drivers find and use available parking spots on streets.
 * [Mapbox](https://www.mapbox.com/)
 * [Bootstrap](https://getbootstrap.com)
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
@@ -58,10 +53,10 @@ Iron Park helps vehicle drivers find and use available parking spots on streets.
 
 To get a local copy up and running follow these simple example steps.
 
-
 ### Installation
 
 1. Get a free API Key at [Firebase](https://firebase.google.com/) and [Mapbox](https://www.mapbox.com/)
+
 2. Clone the repo
    ```sh
    git clone https://github.com/anandxrfeu/iron-park.git
@@ -78,17 +73,15 @@ To get a local copy up and running follow these simple example steps.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
 <!-- CONTACT -->
 ## Contact
 
-Anand Naidu - [@anandxrfeu](https://twitter.com/anandxrfeu)
-Chsirstian - [@anandxrfeu](https://twitter.com/anandxrfeu)
+* Anand Naidu - [@anandxrfeu](https://twitter.com/anandxrfeu)
+* Chsirstian - [@anandxrfeu](https://twitter.com/anandxrfeu)
 
 Project Link: [[https://github.com/anandxrfeu/iron-park](https://github.com/anandxrfeu/iron-park.git)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- ACKNOWLEDGMENTS -->
@@ -98,10 +91,7 @@ Project Link: [[https://github.com/anandxrfeu/iron-park](https://github.com/anan
 * [Nilton Freitas](https://github.com/oniltos)
 * [Felipe Osório](https://github.com/Briofita09)
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [product-screenshot]: src/assets/images/screenshot.png
