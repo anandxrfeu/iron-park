@@ -37,7 +37,7 @@ const ShowAllParkingsPage = () => {
                                           })
 
 
-                    setReservationsList(reservatioArray)
+                    setReservationsList(reservatioArray.reverse())
                 })
                 .catch(error => console.log(error))
 
