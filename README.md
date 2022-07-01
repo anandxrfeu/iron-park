@@ -13,7 +13,6 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -55,7 +54,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation
 
-1. Get a free API Key at [Firebase](https://firebase.google.com/) and [Mapbox](https://www.mapbox.com/)
+1. Get a free API Keys at [Firebase](https://firebase.google.com/) and [Mapbox](https://www.mapbox.com/)
 
 2. Clone the repo
    ```sh
@@ -77,7 +76,7 @@ To get a local copy up and running follow these simple example steps.
 ## Contact
 
 * Anand Naidu - [@anandxrfeu](https://twitter.com/anandxrfeu)
-* Chsirstian - [@anandxrfeu](https://twitter.com/anandxrfeu)
+* Christian - [@anandxrfeu](https://twitter.com/anandxrfeu)
 
 Project Link: [[https://github.com/anandxrfeu/iron-park](https://github.com/anandxrfeu/iron-park.git)
 
