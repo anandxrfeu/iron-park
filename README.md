@@ -27,7 +27,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Iron Park helps vehicle drivers find and use available parking spots on streets. Features includes
+* See all available parking spots on a street
+* Reserve availabla parking spots for fixed time 
+* Extend parking reservation for fixed time
+* View logs of parking reservations (City Council Users)
+
+[![Product Name Screen Shot][product-screenshot]](https://iron-park.netlify.app/)
 
 
 
