@@ -48,7 +48,6 @@ const AuthForm = () => {
         const urlUsers = `https://iron-park-e654f-default-rtdb.firebaseio.com/users.json?orderBy="auth_id"&equalTo="${response.data.localId}"`
         axios.get(urlUsers)
         .then(response => {
-          console.log('during login:: ', response.data)
           userId = Object.keys(response.data)[0]
           const isAdmin = response.data[userId].isAdmin
           // set context
@@ -90,11 +89,8 @@ const AuthForm = () => {
                     isAdmin: false,
                     reservations: []
               }
-              console.log(payloadUsers)
-
                 axios.post(urlUsers,payloadUsers)
                 .then(response => {
-                    console.log('new user sign up',response.data)
                       userId = response.data['name']
                       // set context
                       authCtx.login(idToken,userName,userId,false );

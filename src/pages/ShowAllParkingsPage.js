@@ -21,14 +21,11 @@ const ShowAllParkingsPage = () => {
         const urlUsers =  `https://iron-park-e654f-default-rtdb.firebaseio.com/users/${authCtx.userId}.json`
         axios.get(urlUsers)
         .then(response => {
-            console.log(response.data)
             if(response.data && response.data.isAdmin){
                 //fetch all reservations
                 const urlReservations = 'https://iron-park-e654f-default-rtdb.firebaseio.com/reservations.json'
                 axios.get(urlReservations)
                 .then(response => {
-                    console.log(response.data)
-
                     const keyArray = Object.keys(response.data)
                     const reservatioArray = keyArray.map (key => {
                                             const obj = {...response.data[key]}

@@ -22,10 +22,7 @@ const MainNavigation = () => {
       <nav>
       
         <ul>
-        {console.log('isAdmin: ',isAdmin)}
-        {console.log('typeof isAdmin: ',typeof isAdmin)}
-
-        {isLoggedIn && isAdmin && (
+          {isLoggedIn && isAdmin && (
           <li>
             <Link to='/admin/parking-log'>Parking Log</Link>
           </li>

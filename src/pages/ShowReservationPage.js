@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import axios from "axios"
 import Container from "../components/layout/Container"
 import Mapbox from "../components/map/Mapbox"
@@ -38,7 +38,7 @@ const ShowReservationPage = (props) => {
                 setReservationDetail(response.data)
             })
             .catch(error => console.log(error))
-    }, [])
+    }, [reservationId])
 
 
     useEffect(() => {

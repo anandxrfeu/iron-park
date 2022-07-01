@@ -2,23 +2,16 @@ import React, {useState} from "react";
 import Map, {Marker} from 'react-map-gl'
 import './MapBox.css'
 import pin from '../../assets/images/pin.png'
-//import pin2 from './pin test.png'
-//import pin3 from './pin3-square.png'
-//import pin4 from './Reverse-Pin.png'
+
 
 const Mapbox = (props) => {
 
     const {parkingList, SelectparkingSpotHandler, selectedParkingSpot} = props
-    //console.log(parkingList)
-    //console.log(selectedParkingSpot)
-
     const [viewport, setViewport] = useState({
         //latitude: -23.56167922801466,
         //longitude: -46.66003661013792,
-
         latitude: -23.5617757,
         longitude: -46.6610803,
-
         width: '100%',
         height: '100%',
         zoom: 18,

@@ -115,7 +115,7 @@ const ProfileForm = () => {
                     <input type='text' id='name' ref={newNicknameInputRef}/>
                 </div>
                 <div className='action'>
-                    <button>Change Nickname</button>
+                    <button>Change display Name</button>
                 </div>
             </form>
 

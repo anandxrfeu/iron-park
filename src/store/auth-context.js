@@ -33,7 +33,6 @@ export const AuthContextProvider = (props) => {
         localStorage.setItem('userName',userName)
         localStorage.setItem('userId',userId)        
         localStorage.setItem('isAdmin',isAdmin)
-        console.log('type of in context', typeof isAdmin)
 
     };
     
