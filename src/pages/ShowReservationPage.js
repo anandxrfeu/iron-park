@@ -25,16 +25,17 @@ const ShowReservationPage = (props) => {
   // add state to track active versus expired reservation
     const [isActiveReservation, setIsActiveReservation] = useState(true)
     const [isExtendReservation, setIsExtendReservation] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     const {reservationId} = useParams()
     const [reservationDetail, setReservationDetail] = useState({})
     const [counter, setCounter] = useState(0)
-    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get(`https://iron-park-e654f-default-rtdb.firebaseio.com/reservations/${reservationId}.json`)
             .then(response => {
-            setReservationDetail(response.data)
+                setIsLoading(false)
+                setReservationDetail(response.data)
             })
             .catch(error => console.log(error))
     }, [])
@@ -101,7 +102,10 @@ const ShowReservationPage = (props) => {
                     <Mapbox parkingList={parkingList}  SelectparkingSpotHandler={SelectparkingSpotHandler} selectedParkingSpot={selectedParkingSpot} />
                 </div>
                 <div className="reservation-box">
-                    {isActiveReservation && (
+
+                    {isLoading && <p>Loading..</p>}
+                
+                    {!isLoading && isActiveReservation && (
                         <>
                             <ActiveReservation  checkInTime={displayTime(reservationDetail.reservationTime)}
                                                 checkOutTime={displayTime(reservationDetail.reservationTime +  Number(reservationDetail.parkingDuration)*60000)} />
@@ -116,7 +120,7 @@ const ShowReservationPage = (props) => {
                             )}
                         </>
                     )}
-                    {!isActiveReservation && <ExpiredReservation checkOutTime={displayTime(reservationDetail.reservationTime +  Number(reservationDetail.parkingDuration)*60000)}/>}
+                    {!isLoading && !isActiveReservation && <ExpiredReservation checkOutTime={displayTime(reservationDetail.reservationTime +  Number(reservationDetail.parkingDuration)*60000)}/>}
 
                 </div>
             </Container>
