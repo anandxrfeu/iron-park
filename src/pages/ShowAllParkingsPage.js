@@ -3,7 +3,7 @@ import axios from "axios"
 import { useEffect,useState, useContext } from "react"
 import AuthContext from '../store/auth-context';
 import './ShowAllParkingPage.css'
-
+import { Oval } from  'react-loader-spinner'
 
 
 
@@ -21,9 +21,9 @@ const ShowAllParkingsPage = () => {
 
     const authCtx = useContext(AuthContext)
     const [resevationList, setReservationsList] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
-
         const urlUsers =  `https://iron-park-e654f-default-rtdb.firebaseio.com/users/${authCtx.userId}.json`
         axios.get(urlUsers)
         .then(response => {
@@ -38,16 +38,13 @@ const ShowAllParkingsPage = () => {
                                             obj.id = key
                                             return obj
                                           })
-
-
+                    setIsLoading(false)
                     setReservationsList(reservatioArray.reverse())
                 })
                 .catch(error => console.log(error))
-
             }
         })
         .catch(error => console.log(error))
-
     },[authCtx.userId])
 
     return (
@@ -72,10 +69,13 @@ const ShowAllParkingsPage = () => {
                                 </tr>
                               </thead>
                           </div>
-                          <div className="scrollit">
+
+                          {isLoading && (
+                            <Oval color="#fff" height={100} width={100} />
+                          )}
+                          {!isLoading && (
+                            <div className="scrollit">
                             <tbody>
-
-
                                     {resevationList.map( reservation => {
                                         return (
                                             <tr className="trparkinginfo" key={reservation.id}>
@@ -97,9 +97,9 @@ const ShowAllParkingsPage = () => {
                                             </tr>
                                             )
                                     })}
-
                               </tbody>
                             </div>
+                          )}
                         </table>
                     </div>
               </div>

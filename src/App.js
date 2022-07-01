@@ -1,4 +1,5 @@
 import './App.css';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import {useContext, useEffect, useState} from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AuthContext from './store/auth-context';
@@ -10,6 +11,8 @@ import ShowReservation from './pages/ShowReservationPage';
 import UserProfile from './components/profile/UserProfile'
 import Layout from './components/layout/Layout'
 import axios from 'axios';
+import { Oval } from  'react-loader-spinner'
+
 
 
 
@@ -50,7 +53,9 @@ function App() {
 
   return (
     <Layout>
-      {isLoading && <p>Loading..</p>}
+      {isLoading && (
+        <Oval color="#000000" height={100} width={100} />
+      )}
       {!isLoading && (
         <Routes>
           <Route path='/' element={<HomePage

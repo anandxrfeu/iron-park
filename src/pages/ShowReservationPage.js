@@ -6,6 +6,8 @@ import Mapbox from "../components/map/Mapbox"
 import ActiveReservation from "../components/reservations/ActiveReservation"
 import ExpiredReservation from "../components/reservations/ExpiredReservation"
 import UpdateReservationForm from "../components/reservations/UpdateReservationForm"
+import { Oval } from  'react-loader-spinner'
+
 
 
 function padTo2Digits(num) {
@@ -103,7 +105,9 @@ const ShowReservationPage = (props) => {
                 </div>
                 <div className="reservation-box">
 
-                    {isLoading && <p>Loading..</p>}
+                    {isLoading && (
+                        <Oval color="#000000" height={100} width={100} />
+                    )}
                 
                     {!isLoading && isActiveReservation && (
                         <>
