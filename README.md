@@ -78,7 +78,7 @@ To get a local copy up and running follow these simple example steps.
 ## Contact
 
 * Anand Naidu - [@anandxrfeu](https://twitter.com/anandxrfeu)
-* Christian - [@anandxrfeu](https://twitter.com/anandxrfeu)
+* Christian - [@Cglik001](https://github.com/Cglik001)
 
 Project Link: [[https://github.com/anandxrfeu/iron-park](https://github.com/anandxrfeu/iron-park.git)
 
